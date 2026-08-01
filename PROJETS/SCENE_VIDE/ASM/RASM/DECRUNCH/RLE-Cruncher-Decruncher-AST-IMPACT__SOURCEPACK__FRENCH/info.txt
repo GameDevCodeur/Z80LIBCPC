@@ -1,0 +1,326 @@
+AprŠs une discussion ce matin … propos du packed/unpacker RLE de CNGSOFT, j'ai d‚cid‚ de coder mon propre cruncher rle.
+L'objectif est le suivant, … savoir, produire un cruncher/decruncher RLE, totalement relogeable.
+
+Qu'… cela ne tienne.
+
+Voici, le fruit de mes recherches dont je me fais le plaisir de partager avec vous.
+
+J'ai travaill‚, en d‚but d'aprŠs-midi sur une premiŠre ‚bauche que je vais vous tenter de vous expliquer.
+
+
+Le Cruncher (v1)
+
+Code:
+
+;
+; RLE Cruncher (v1)
+; ---by AsT/iMPACT
+; hl=source | de=destination | ix=lenght
+; structure -> data,flux
+;
+   org #a000
+;
+   ld hl,#c000
+   ld de,#4000
+   ld ix,#4000
+;
+   ld b,0 ; compteur de flux
+loop_rle
+   ld a,(hl) ; prends 1er octet
+   ld (de),a ; octet
+   inc de
+nxt_byte
+   ld i,a
+   ld a,ixl ; si long du fichier=0
+   or ixh
+   ret z ; alors plus rien a compacter
+;
+   dec ix
+   inc hl
+   inc b ; b=b+1
+   ld a,b ; si B=0 alors on a 256-1 interation du motif (1er Octet)
+   or a ;
+   jr z,ba0
+;
+   ld a,i ;on sauve le 1er octet dans le reg I
+;
+   ld c,(hl) ; octet 2
+   cp c ; compare octet 1 & 2
+   jr z,nxt_byte ; si les 2 octets sont ‚gaux alors on mets en place le compteur d'it‚rations
+;
+pokeflux
+;
+   ld a,b ; recupŠre le compteur et
+   ld (de),a ; poke-le aprŠs l'octet.
+   inc de
+   ld b,0 ; raz compteur de flux
+   jr loop_rle
+;
+; Un octet de trop
+;
+ba0    dec b ; pour garder le flux (Seulement quand b=0, b=255 it‚rations)
+   dec hl ; on revient un octet avant
+   jr pokeflux
+
+
+La base de celui-ci est fort simple. On prends le 1er octet (source), on le poke dans la destination.On prends le second octet (source) et on regarde si cet octet est identique au 1er. Si ce cas est av‚r‚, on mets en route un petit compteur, dans le cas contraire, l'octet 2 devient l'octet 1. il est pok‚ en ram. reste plus qu'… reboucler le tout.
+
+Si je devais expliquer l'algo d'une fa‡on plus simple cela donnerait :
+
+Si le code … compresser ‚tait par exemple :
+
+
+00 00 00 00 00 3F FF 8C 8C 8C 8C 09 09
+
+
+le programme sortira la suite suivante :
+
+
+00 05 3F 01 FF 01 8C 03 09 02
+
+
+Si je traduis cela de fa‡on compr‚hensive :
+
+5x 00, puis 1x #3F, 1x #ff, 4x #8c, 2x #09
+
+En gros, la structure est la suivante, octet … poker suivi du nombre de fois … le poker.
+
+Le D‚cruncher (v1)
+
+Code:
+
+;
+; RLE Decruncher (v1)
+; ---by AsT/iMPACT
+; hl=source | de=destination
+; structure -> data,flux
+; quand 00,00 fin du fichier
+;
+   org #a100
+;
+   ld hl,#4000
+   ld de,#C000
+;
+decrunch
+   ld c,(hl) ; 1er octet
+   inc hl
+   ld b,(hl) ; 2Šme octet
+   inc hl
+
+   ld a,c ; on teste si les 2 octets sont … z‚ro
+   or b
+   ret z ; si 00,00 alors fin
+;
+   ld a,c ; on r‚cupŠre la valeur du 1er octet
+;
+flux
+   ld (de),a ; on le poke b fois
+   inc de
+   djnz flux
+   jr decrunch
+;
+
+
+Le code du d‚cruncher fait la mˆme chose … l'envers, … savoir lire l'octet puis le nombre de fois que cet octet est r‚p‚t‚.
+La fin est d‚tect‚e quand le programme rencontre "00,00"
+
+J'aurais pu m'arrˆter l…, mais, je me suis dis que pour les r‚p‚titions x il y avait 2 octets occup‚s pour un seul octet sorti.
+La solution passait donc, par un flag, ou plut“t un identifiant de boucle.
+
+La m‚thode choisie, je cherche dans le code … compresser parmi 256 valeurs possibles (0-255), la valeur qui n'existe pas dans le code … compresser.
+
+Recherche du Flag (ou recherche de l'octet non utlis‚ dans les datas … cruncher)
+
+Code:
+
+;
+; Recherche de Flag
+; -- By Ast/iMPACT
+; HL=Source | BC=Longueur
+;
+   org #A200
+
+   ld e,0 ; flag de d‚part (0-255)
+;
+stream
+   ld hl,#c000 ; adresse de d‚part
+   ld bc,#4000 ;longueur du fichier … compresser
+;
+bouc
+   ld a,(hl) ; Lis octet
+   cp e      ; on compare l'octet au flag contenu dans le Reg E
+   jr z,found ; l'octet est le mˆme que le flag, on passe au flag suivant (e=e-1)
+   inc hl
+   dec bc
+   ld a,b
+   or c
+   jr nz,bouc ; on boucle tant que l'octet et le flag ne sont pas ‚gaux durant la longueur d‚termin‚e par BC
+diff   ld a,e ; E=octet n'existant pas dans le fichier … compresser. A=E
+        ld (#36),a ; adresse o— sera pok‚ ce flag
+   ret
+
+found
+   dec e ; si l'octet est le mˆme que le flag, on change la valeur du flag
+   jr nz,stream ; et on retourne au d‚but rechercher un nouveau flag
+   ret
+
+
+Quand le flag est trouv‚, il est directement pok‚ … l'adresse #36.
+
+Le Cruncher (v2)
+
+Code:
+
+;
+; RLE Cruncher (v2)
+; ---by AsT/iMPACT
+; hl=source | de=destination | ix=lenght
+; structure -> data,flag,flux
+;
+flag equ #36
+;
+crunch
+   ld hl,#c000
+   ld de,#4000
+   ld ix,#4000
+;
+   ld b,0 ; compteur de flux
+loop_rle
+   ld a,(hl) ; prends 1er octet
+   ld (de),a ; octet
+   inc de
+nxt_byte
+   ld i,a ; i=a=1er octet
+   ld a,ixl ; si long du fichier=0
+   or ixh
+   ret z ; alors plus rien a compacter
+;
+   dec ix
+   inc hl
+   inc b ; b=b+1
+   ld a,b ; si b=0 alors on a 256-1 interation du motif (1er Octet)
+   or a
+   jr z,ba0
+;
+   ld a,i ; recupŠre valeur de a (1er octet)
+;
+   ld c,(hl) ; octet 2
+   cp c ; compare octet 1 & 2
+   jr z,nxt_byte
+;
+   ld a,b
+   dec a
+   jr z,pokeone
+;
+pokeflux
+;
+   ld a,(flag)
+   ld (de),a
+   inc de
+;
+pokebyte
+;
+   ld a,b
+   ld (de),a
+   inc de
+   jr pokeone
+;
+; Un octet de trop
+;
+ba0    dec b ; pour garder le flux
+   dec hl
+   jr pokeflux
+;
+pokeone   ld b,0
+   jr loop_rle
+
+
+Si le code … compresser ‚tait par exemple
+
+00 00 00 00 00 3F FF 8C 8C 8C 8C 09 09
+
+le programme sortira la suite suivante : (avec #ae comme flag)
+
+00 AE 05 3F FF 8C AE 04 09 AE 02
+
+
+Si je traduis cela de fa‡on compr‚hensive :
+
+Octet #00, flag #AE donc r‚p‚tition 5x
+Octet #3F, pas de flag on passe au suivant
+Octet #FF, pas de flag on passe au suivant
+Octet #8c, flag #AE donc r‚p‚tition 4x
+Octet #09, flag #AE donc r‚p‚tition 2x
+...
+
+Le D‚cruncher (v2)
+
+Code:
+
+;
+; RLE Decruncher (v2)
+; ---by AsT/iMPACT
+; hl=source | de=destination
+; structure -> data,flag,flux
+; quand 00,00 fin du fichier
+;
+   org #a100
+;
+flag    equ #36
+;
+   ld hl,#4000 ; startadr
+   ld de,#C000 ; destination
+   ld a,(flag) ; le flag a ‚t‚ d‚termin‚ par la routine recherche de flag
+   ld ixl,a
+;
+decrunch
+   ld c,(hl) ;octet 1
+   inc hl
+   ld b,(hl) ; flag ou octet 2
+   inc hl
+
+   ld a,c ;Est ce que l'octet 1 est l'octet 2 sont … z‚ro ?
+   or b ;
+   ret z ; si 00,00 alors fin
+;
+   ld a,b ; est ce que l'octet 2 est le flag ?
+   cp ixl ; #fd
+   jr nz,noflux ; s'il n'y a pas de r‚p‚tition on poke seulement l'octet (sans r‚p‚tition)
+;
+
+   ld b,(hl) ; flux
+   inc hl
+;
+   ld a,c ; on r‚cupŠre l'octet … r‚p‚ter
+;
+flux
+   ld (de),a ;on poke en m‚moire
+   inc de
+   djnz flux ;on boucle x fois
+;
+   jr decrunch
+;
+; Pas de r‚p‚tion ? On poke juste l'octet
+;
+noflux
+   ld a,c ; recupŠre l'octet en cours (1er octet)
+   ld(de),a ;on poke
+   inc de
+    dec hl ; on revient 1 octet avant
+;
+   jr decrunch
+;
+
+
+Le d‚cruncher joue son r“le, comme expliqu‚ plus haut.
+La fin est d‚tect‚e quand le programme rencontre "00,00"
+
+Quoiqu'il en en soit :
+
+- Les m‚thodes 1 & 2 sont relogeables.
+- La vitesse de compression/d‚compression est rapide.
+
+Il faut toutefois rajouter 2 octets de plus en fin de fichier (… z‚ro) afin que le marqueur "fin" soit en place.
+Par exemple, si le fichier compress‚ fait #19F0 octets, une fois sauvegard‚, il devra faire #19F2 octets, les deux derniers octets devant ˆtre … z‚ro.
+
+Je reste n‚anmoins … votre disposition pour toute autre m‚thode, routine propos‚e ici, dont je suis friand (je dois bien l'avouer!)
