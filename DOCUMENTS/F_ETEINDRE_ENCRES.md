@@ -78,7 +78,7 @@ La routine utilise la macro `mGA_SET_PEN_INK` qui s’attend à trouver :
 F_ETEINDRE_ENCRES
     LD   A, 17                      ; 17 itérations (16 encres + bordure)
     LD   B, HI(GA_PORT)             ; B = 0x7F (octet haut du port GA)
-    LD   D, HW_BLACK                ; D = 0 (couleur noire)
+    LD   D, HW_BLACK                ; D = (couleur noire)
 .B_ENCRES:
     DEC  A                          ; Décrémente : 16 → 15 → ... → 0
     mGA_SET_PEN_INK                 ; Définit l'encre A avec la couleur D
@@ -95,7 +95,7 @@ Pour que cette routine fonctionne, plusieurs éléments doivent être définis *
 | Symbole | Type | Exemple de définition | Rôle |
 | :--- | :--- | :--- | :--- |
 | `GA_PORT` | Constante | `GA_PORT EQU 0x7F00` | Adresse de base du port Gate Array. |
-| `HW_BLACK` | Constante | `HW_BLACK EQU 0` | Code matériel de la couleur noire (sur CPC, 0 = noir). |
+| `HW_BLACK` | Constante | `HW_BLACK` | Code matériel de la couleur noire. |
 | `mGA_SET_PEN_INK` | Macro | Doit être définie comme vu précédemment | Effectue les deux `OUT (C),r` pour écrire dans le GA. |
 | `C` | Registre | Doit être `0x00` avant l’appel | Octet bas du port GA. La routine ne le modifie pas, donc un appel préalable `LD C, 0` est nécessaire. |
 
@@ -186,7 +186,7 @@ Elle tire parti de la macro `mGA_SET_PEN_INK` pour une écriture efficace dans l
 
 | Version | Date | Auteur | Changements |
 | :--- | :--- | :--- | :--- |
-| 1.0 | 2026-08-07 | Analyse technique | Version initiale. Documentation complète du fonctionnement. |
+| 1.0 | 2026-08-07 | Patrick MAES | Version initiale. Documentation complète du fonctionnement. |
 
 ---
 
