@@ -1,0 +1,11 @@
+	ORG 	&100
+
+	LD 	HL,FILE
+	LD 	B, BUFF-FILE
+	LD 	DE,BUFF
+	CALL 	&BC77
+	CALL  &BC7A
+	RET
+
+FILE: DEFM '0A:test.dat'
+BUFF: DEFS &0800
