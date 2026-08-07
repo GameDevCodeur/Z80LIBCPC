@@ -195,6 +195,6 @@ La macro **`mGA_SET_MODE`** est un exemple parfait d’écriture efficace pour l
 
 | Version | Date | Auteur | Changements |
 | :--- | :--- | :--- | :--- |
-| 1.0 | 2026-08-07 | Analyse technique | Version initiale. Documentation complète du fonctionnement. |
+| 1.0 | 2026-08-07 | Patrick MAES | Version initiale. Documentation complète du fonctionnement. |
 
 ---
