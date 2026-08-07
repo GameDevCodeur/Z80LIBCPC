@@ -4,7 +4,8 @@
 > **Plateforme Cible :** Amstrad CPC (464 / 664 / 6128)  
 > **Langage :** Assembleur Z80  
 > **Résolution :** Mode 0 Custom ($128 \\times 192$ pixels, 16 couleurs)  
-> **Auteur :** Moteur Physics & Graphics Engine 2D  
+> **Auteur : DEVZ80CPC - Patrick MAES
+> **Moteur : Z80LIB - ** Moteur Physics & Graphics Engine 2D
 
 ---
 
