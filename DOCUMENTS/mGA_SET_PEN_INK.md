@@ -1,10 +1,4 @@
 
-Voici le fichier **Markdown complet et prêt à l'emploi** pour la macro `mGA_SET_PEN_INK`.  
-Il vous suffit de copier tout le bloc ci‑dessous et de l'enregistrer sous le nom **`mGA_SET_PEN_INK_DOC.md`**.
-
----
-
-````markdown
 # 📘 Documentation technique : Macro `mGA_SET_PEN_INK`
 
 **Auteur** : Analyse personnalisée pour développement Z80 / Amstrad CPC  
