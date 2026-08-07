@@ -1,5 +1,5 @@
 
-md_content = """# 🏓 Document de Présentation Projet : PONG Z80 (Amstrad CPC)
+### Document de Présentation Projet : PONG Z80 (Amstrad CPC)
 
 > **Plateforme Cible :** Amstrad CPC (464 / 664 / 6128)  
 > **Langage :** Assembleur Z80  
