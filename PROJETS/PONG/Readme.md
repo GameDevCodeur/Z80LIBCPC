@@ -43,8 +43,8 @@
 
 | Phase | Intitulé | Livrables & Objectifs |
 | :--- | :--- | :--- |
-| **Phase 1** | **Core & VRAM** | Initialisation du Mode 0, paramétrage CRTC et routines de tracé. |
-| **Phase 2** | **Physique & Logic** | Implémentation de la logique balle/raquettes et gestion AABB. |
-| **Phase 3** | **I/O & Sound** | Intégration des contrôles et programmation de la puce AY-3-8912. |
-| **Phase 4** | **Recette & Delivery** | Tests d'exécution sur machines réelles et livraison des exécutables (`.SNA` / `.DSK`). |
+| **Phase 1** | **Scène Titre** | Affichage d'une image de titre 3 secondes. |
+| **Phase 2** | **Scène Menu** | Affichage du Menu avec Text Clignotant. |
+| **Phase 3** | **Scène Game** | Intégration du GamePlay d'une partie. |
+| **Phase 4** | **Scène GameOver** | Intégration de la fin de la partie. |
 """
