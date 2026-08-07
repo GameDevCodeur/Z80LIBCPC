@@ -5,7 +5,7 @@
 > **Langage :** Assembleur Z80  
 > **Résolution :** Mode 0 Custom ($128 \\times 192$ pixels, 16 couleurs)  
 > **Auteur :** DEVZ80CPC - Patrick MAES
-> **Moteur :** Z80LIB - Moteur Physics & Graphics Engine 2D
+> **Moteur :** Z80LIB Moteur Physics & Graphics Engine 2D
 
 ---
 
