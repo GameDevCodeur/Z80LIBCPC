@@ -166,7 +166,7 @@ Cependant, elle utilise des **labels locaux** (préfixés par `@`) qui doivent �
 ; Destination en RAM à DEST_ADDR
 ld   hl, ZX0_DATA
 ld   de, DEST_ADDR
-CALL DecompressZX0
+DecompressZX0
 ; Ici, les données sont décompressées.
 ```
 
