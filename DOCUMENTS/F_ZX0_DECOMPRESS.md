@@ -1,5 +1,5 @@
 
-# 📘 Documentation technique : Macro `DecompressZX0`
+# 📘 Documentation technique : Fonction `F_ZX0_Decompress`
 
 **Auteur** : Analyse personnalisée pour développement Z80 / Amstrad CPC  
 **Version** : 1.0  
@@ -11,7 +11,7 @@
 
 ## 1. Introduction
 
-La macro **`DecompressZX0`** est un décompresseur **ultra‑rapide** pour le format de compression **ZX0**, conçu pour les systèmes Z80 (Amstrad CPC, ZX Spectrum, etc.).  
+La fonction **`F_ZX0_Decompress`** est un décompresseur **ultra‑rapide** pour le format de compression **ZX0**, conçu pour les systèmes Z80 (Amstrad CPC, ZX Spectrum, etc.).  
 Elle est basée sur le travail d’Einar Saukas et a été optimisée pour la vitesse par spke, tout en restant très compacte (187 octets).  
 Elle est environ **5 % plus rapide** que le décompresseur "Turbo" (128 octets) et atteint des performances proches de la version "Mega" (412 octets).
 
@@ -166,7 +166,7 @@ Cependant, elle utilise des **labels locaux** (préfixés par `@`) qui doivent �
 ; Destination en RAM à DEST_ADDR
 ld   hl, ZX0_DATA
 ld   de, DEST_ADDR
-DecompressZX0
+CALL DecompressZX0
 ; Ici, les données sont décompressées.
 ```
 
@@ -227,7 +227,7 @@ Elle s’intègre facilement dans tout projet et ne nécessite aucune bibliothè
 
 | Version | Date | Auteur | Changements |
 | :--- | :--- | :--- | :--- |
-| 1.0 | 2026-08-07 | Analyse technique | Documentation complète du fonctionnement. |
+| 1.0 | 2026-08-07 | Patrick MAES | Documentation complète du fonctionnement. |
 
 ---
 
