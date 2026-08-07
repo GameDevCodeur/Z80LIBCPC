@@ -1,0 +1,20 @@
+
+    ; ===========================================
+    ;  FONCTIONS DE LA Z80LIB v100 OBLIGATOIRES
+    ; ===========================================
+    INCLUDE "F_Z80LIB_MAIN.INC"
+    INCLUDE "F_Z80LIB_LANCER.INC"
+
+    ; ===========================================
+    ;  FONCTIONS DE LA Z80LIB v100 SELECTIONABLES
+    ; ===========================================
+   
+    ;INCLUDE "Z80LIBv00/F_KBD_GET_KEYCODE.INC"
+    ;INCLUDE "Z80LIBv00/F_WAIT_FULL_VBL.INC"    
+    ;INCLUDE "Z80LIBv00/F_ENCODE_COLOR_LEFT_PIXEL_M0.INC"
+    ;INCLUDE "Z80LIBv00/F_ENCODE_COLOR_RIGHT_PIXEL_M0.INC"
+    ;INCLUDE "Z80LIBv00/F_RLE_COMPRESS.INC"
+    ;INCLUDE "Z80LIBv00/F_RLE_DECOMPRESS.INC"
+    ;INCLUDE "Z80LIBv00/F_TEMPO.INC"
+    ;INCLUDE "Z80LIBv00/SCR/F_SCR_CREER_TABLE.INC"
+    ;INCLUDE "Z80LIBv00/SCR/F_SCR_ADRESSE_HL.INC"
