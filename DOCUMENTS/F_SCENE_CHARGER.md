@@ -33,11 +33,14 @@ principale et ses propres gestionnaires d’interruptions.
 | **Nom** | `F_SCENE_CHARGER` |
 | **Paramètres** | Aucun |
 | **Entrées** | `B` = Identifiant de la scène (`ID_SCENE_xxx`), doit être séquentiel de 0 à `SCENE_TABLE_COUNT-1` |
-| **Sortie** | Si l’ID est valide : **saut vers `F_SCENE_xxx_INITIALISATION`** (ne retourne pas)<br>Si l’ID est invalide : retour à l’appelant (`RET`) avec `Carry` non modifié |
+| **Sortie** | Si l’ID est valide : **saut vers `F_SCENE_xxx_INITIALISATION`** (ne retourne pas)
+Si l’ID est invalide : retour à l’appelant (`RET`) avec `Carry` non modifié |
 | **Registres détruits** | `AF`, `DE`, `HL` |
 | **Registres préservés** | `BC` (sauf `B` modifié implicitement mais `C` est préservé), `IX`, `IY` |
 | **Taille du code** | 44 octets |
-| **Dépendances** | `SCENE_TABLE` (table de 6 octets par scène)<br>`SCENE_TABLE_COUNT` (constante)<br>`IM1_NOT_READY` (constante, généralement `0xFF`)<br>`IM1_INDEX`, `IM1_CURRENT`, `SCENE_ACTUEL` (variables mémoire) |
+| **Dépendances** | `SCENE_TABLE` (table de 6 octets par scène)<br>`SCENE_TABLE_COUNT` (constante)
+`IM1_NOT_READY` (constante, généralement `0xFF`)
+`IM1_INDEX`, `IM1_CURRENT`, `SCENE_ACTUEL` (variables mémoire) |
 
 ---
 
@@ -67,7 +70,8 @@ LD   A, IM1_NOT_READY
 LD   (IM1_INDEX), A
 ```
 - On place la valeur `IM1_NOT_READY` (ex: `0xFF`) dans la variable `IM1_INDEX`.
-- Pendant la transition, si une interruption IM1 survient, le dispatcher d’interruption voit cet index invalide<br>et ne fait rien (au lieu d’appeler un pointeur corrompu).
+- Pendant la transition, si une interruption IM1 survient, le dispatcher d’interruption voit cet index invalide
+et ne fait rien (au lieu d’appeler un pointeur corrompu).
 
 #### Étape 2 : Vérification des limites
 ```z80
@@ -76,7 +80,8 @@ CP   SCENE_TABLE_COUNT
 RET  NC
 ```
 - Si `B >= SCENE_TABLE_COUNT` (flag `C` = 0, donc `NC`), la routine retourne sans rien faire.
-- **Comportement volontaire** : cela laisse `IM1_INDEX` à `IM1_NOT_READY`, ce qui fige les interruptions<br>jusqu’au prochain changement valide. C’est un signal de bug si un identifiant invalide est passé par erreur.
+- **Comportement volontaire** : cela laisse `IM1_INDEX` à `IM1_NOT_READY`, ce qui fige les interruptions
+jusqu’au prochain changement valide. C’est un signal de bug si un identifiant invalide est passé par erreur.
 
 #### Étape 3 : Calcul de l’offset dans la table (`ID × 6`)
 ```z80
@@ -121,7 +126,8 @@ LD   (SCENE_ACTUEL+1), HL
 ```
 - On récupère `F_SCENE_xxx` dans `HL`.
 - On le stocke à l’adresse `SCENE_ACTUEL + 1`.  
-  **Convention** : `SCENE_ACTUEL` est probablement une instruction `JP (HL)` ou `CALL` (3 octets). Le `+1` correspond <br>au premier octet de l’adresse (partie basse).  
+  **Convention** : `SCENE_ACTUEL` est probablement une instruction `JP (HL)` ou `CALL` (3 octets). Le `+1` correspond
+au premier octet de l’adresse (partie basse).  
   Ainsi, modifier `(SCENE_ACTUEL+1)` et `(SCENE_ACTUEL+2)` (implicitement via le mot) change la cible du saut.
 
 #### Étape 6 : Saut vers l’initialisation (tail‑call)
@@ -131,7 +137,8 @@ RET
 ```
 - On empile l’adresse de `F_SCENE_xxx_INITIALISATION`.
 - Le `RET` dépile cette adresse et y saute.  
-  **Résultat** : La routine ne retourne pas à l’appelant ; elle passe directement à l’initialisation de la nouvelle scène. <br>C’est une optimisation de type *tail‑call* (économie d’un `JP`).
+  **Résultat** : La routine ne retourne pas à l’appelant ; elle passe directement à l’initialisation de la nouvelle scène.
+C’est une optimisation de type *tail‑call* (économie d’un `JP`).
 
 ---
 
