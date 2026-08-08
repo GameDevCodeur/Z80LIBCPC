@@ -216,12 +216,20 @@ F_IM1_DISPATCH:
 
 | Point d’attention | Recommandation |
 | :--- | :--- |
-| **Non‑retour** | La routine **ne revient pas** à l’appelant si l’ID est valide. Elle saute directement vers l’init de la scène. Si votre code attend un `RET` pour continuer, cela ne fonctionnera pas. |
-| **Invalidation IM1** | L’invalidation est volontaire pour éviter les appels d’interruption pendant la transition. Cependant, si la transition est trop longue, les interruptions sont perdues. Assurez‑vous que le temps de l’init est court ou que vous gérez les interruptions différemment. |
-| **Registres modifiés** | `AF`, `DE`, `HL` sont écrasés. Si l’appelant a besoin de ces valeurs, il doit les sauvegarder (`PUSH`). |
-| **Ordonnancement des ID** | Les identifiants `ID_SCENE_xxx` doivent être **séquentiels** (0, 1, 2…) et correspondre à l’ordre dans `SCENE_TABLE`. Toute lacune provoquera un comportement erroné. |
-| **Taille de `SCENE_TABLE_COUNT`** | Doit être une constante connue à l’assemblage. L’instruction `CP SCENE_TABLE_COUNT` fonctionne avec une valeur immédiate. |
-| **`SCENE_ACTUEL+1`** | Cette adresse doit pointer sur un mot de 2 octets modifiable (généralement les deux derniers octets d’une instruction `JP`). Si `SCENE_ACTUEL` est une instruction `CALL`, cela fonctionne aussi. |
+| **Non‑retour** | La routine **ne revient pas** à l’appelant si l’ID est valide. Elle saute directement vers l’init de la scène.
+Si votre code attend un `RET` pour continuer, cela ne fonctionnera pas. |
+| **Invalidation IM1** | L’invalidation est volontaire pour éviter les appels d’interruption pendant la transition.
+Cependant, si la transition est trop longue, les interruptions sont perdues.
+Assurez‑vous que le temps de l’init est court ou que vous gérez les interruptions différemment. |
+| **Registres modifiés** | `AF`, `DE`, `HL` sont écrasés.
+Si l’appelant a besoin de ces valeurs, il doit les sauvegarder (`PUSH`). |
+| **Ordonnancement des ID** | Les identifiants `ID_SCENE_xxx` doivent être **séquentiels** (0, 1, 2…) et correspondre à l’ordre
+dans `SCENE_TABLE`. Toute lacune provoquera un comportement erroné. |
+| **Taille de `SCENE_TABLE_COUNT`** | Doit être une constante connue à l’assemblage.
+L’instruction `CP SCENE_TABLE_COUNT` fonctionne avec une valeur immédiate. |
+| **`SCENE_ACTUEL+1`** | Cette adresse doit pointer sur un mot de 2 octets modifiable
+(généralement les deux derniers octets d’une instruction `JP`).
+Si `SCENE_ACTUEL` est une instruction `CALL`, cela fonctionne aussi. |
 
 ---
 
@@ -240,7 +248,8 @@ Découpage des instructions (approximatif) :
 | Déplacements et étiquettes | ~5 |
 | **Total** | **44** |
 
-La routine est très compacte pour un chargeur de scène générique, grâce à une gestion efficace des adresses <br>et à l’utilisation d’un `RET` astucieux pour le saut final.
+La routine est très compacte pour un chargeur de scène générique, grâce à une gestion efficace des adresses
+et à l’utilisation d’un `RET` astucieux pour le saut final.
 
 ---
 
@@ -254,7 +263,8 @@ Elle offre :
 - ✅ Une **transition instantanée** vers la nouvelle scène.
 - ✅ Un code **compact** et **rapide** (44 octets).
 
-En combinant cette routine avec une table de scènes bien structurée et un dispatcher IM1 robuste, <br>vous obtenez un squelette de programme flexible et fiable pour l’Amstrad CPC.
+En combinant cette routine avec une table de scènes bien structurée et un dispatcher IM1 robuste,
+vous obtenez un squelette de programme flexible et fiable pour l’Amstrad CPC.
 
 ---
 
