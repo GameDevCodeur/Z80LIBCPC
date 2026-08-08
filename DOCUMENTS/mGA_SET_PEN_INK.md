@@ -154,6 +154,7 @@ mGA_SET_PEN_INK
 ---
 ### 7.1 Liste des 27 couleurs 
 
+```
 HW_BLACK<BR>
 HW_BLUE<BR>
 HW_BRIGHT_BLUE<BR>
@@ -181,7 +182,9 @@ HW_PASTEL_CYAN<BR>
 HW_BRIGHT_YELLOW<BR>
 HW_PASTEL_YELLOW<BR>
 HW_BRIGHT_WHITE<BR>
+```
 ---
+
 ## 8. Conclusion
 La macro **`mGA_SET_PEN_INK`** est une brique élémentaire mais essentielle pour le contrôle des couleurs sur Amstrad CPC. Sa simplicité (deux OUT) la rend extrêmement efficace et facile à intégrer dans des boucles de dessin ou des initialisations d’écran.
 
