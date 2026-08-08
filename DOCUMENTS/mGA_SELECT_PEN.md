@@ -181,14 +181,14 @@ FLASH_TOGGLE:
 
 ---
 
-## 9. Différence avec `mGA_SET_INK`
+## 9. Différence avec `mGA_SET_PEN_INK`
 
 | Macro | Nombre d'`OUT` | Utilisation |
 | :--- | :--- | :--- |
 | `mGA_SELECT_PEN` | 1 (sélection) | Flexible : permet d'écrire plusieurs couleurs sur le même stylo sans le resélectionner. |
-| `mGA_SET_INK` | 2 (sélection + couleur) | **Recommandée** en une seule ligne, plus concise, mais re-sélectionne le stylo à chaque appel. |
+| `mGA_SET_PEN_INK` | 2 (sélection + couleur) | **Recommandée** en une seule ligne, plus concise, mais re-sélectionne le stylo à chaque appel. |
 
-> 💡 **Choix** : Utilisez `mGA_SELECT_PEN` si vous devez appliquer plusieurs couleurs différentes au même stylo (ex : effacer un texte). Utilisez `mGA_SET_INK` pour la plupart des cas simples où une seule couleur est appliquée.
+> 💡 **Choix** : Utilisez `mGA_SELECT_PEN` si vous devez appliquer plusieurs couleurs différentes au même stylo (ex : effacer un texte). Utilisez `mGA_SET_PEN_INK` pour la plupart des cas simples où une seule couleur est appliquée.
 
 ---
 
@@ -199,4 +199,4 @@ FLASH_TOGGLE:
 Elle est la brique de base de tout programme graphique sur CPC, qu'il s'agisse de jeux, de démos ou d'outils système.
 
 > 🔧 **Recommandation** : Associez cette macro à des couleurs prédéfinies (`HW_WHITE`, `HW_BLACK`, etc.) pour un code clair et maintenable.
-> 
+
