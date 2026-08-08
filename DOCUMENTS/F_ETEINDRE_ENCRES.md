@@ -1,6 +1,6 @@
 # 📘 Documentation technique : Routine `F_ETEINDRE_ENCRES`
 
-**Auteur** : Analyse personnalisée pour développement Z80 / Amstrad CPC  
+**Auteur** : Patrick MAES - Analyse personnalisée pour développement Z80 / Amstrad CPC  
 **Version** : 1.0  
 **Date** : 2026-08-07  
 **Assembleur** : RASM (ou compatible)  
