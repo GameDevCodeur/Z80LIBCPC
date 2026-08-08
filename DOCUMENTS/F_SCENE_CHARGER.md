@@ -21,7 +21,8 @@ Elle assure la transition entre deux scènes en :
 3. **Mettant à jour** les pointeurs de la scène active (`SCENE_ACTUEL`) et du tableau IM1 associé.
 4. **Sautant** directement vers la routine d’initialisation de la nouvelle scène (sans retourner à l’appelant).
 
-Cette routine est conçue pour être utilisée dans un système multi‑scènes, où chaque scène possède sa propre boucle principale et ses propres gestionnaires d’interruptions.
+Cette routine est conçue pour être utilisée dans un système multi‑scènes, où chaque scène possède sa propre boucle
+principale et ses propres gestionnaires d’interruptions.
 
 ---
 
@@ -66,7 +67,7 @@ LD   A, IM1_NOT_READY
 LD   (IM1_INDEX), A
 ```
 - On place la valeur `IM1_NOT_READY` (ex: `0xFF`) dans la variable `IM1_INDEX`.
-- Pendant la transition, si une interruption IM1 survient, le dispatcher d’interruption voit cet index invalide et ne fait rien (au lieu d’appeler un pointeur corrompu).
+- Pendant la transition, si une interruption IM1 survient, le dispatcher d’interruption voit cet index invalide<br>et ne fait rien (au lieu d’appeler un pointeur corrompu).
 
 #### Étape 2 : Vérification des limites
 ```z80
@@ -75,7 +76,7 @@ CP   SCENE_TABLE_COUNT
 RET  NC
 ```
 - Si `B >= SCENE_TABLE_COUNT` (flag `C` = 0, donc `NC`), la routine retourne sans rien faire.
-- **Comportement volontaire** : cela laisse `IM1_INDEX` à `IM1_NOT_READY`, ce qui fige les interruptions jusqu’au prochain changement valide. C’est un signal de bug si un identifiant invalide est passé par erreur.
+- **Comportement volontaire** : cela laisse `IM1_INDEX` à `IM1_NOT_READY`, ce qui fige les interruptions<br>jusqu’au prochain changement valide. C’est un signal de bug si un identifiant invalide est passé par erreur.
 
 #### Étape 3 : Calcul de l’offset dans la table (`ID × 6`)
 ```z80
@@ -120,7 +121,7 @@ LD   (SCENE_ACTUEL+1), HL
 ```
 - On récupère `F_SCENE_xxx` dans `HL`.
 - On le stocke à l’adresse `SCENE_ACTUEL + 1`.  
-  **Convention** : `SCENE_ACTUEL` est probablement une instruction `JP (HL)` ou `CALL` (3 octets). Le `+1` correspond au premier octet de l’adresse (partie basse).  
+  **Convention** : `SCENE_ACTUEL` est probablement une instruction `JP (HL)` ou `CALL` (3 octets). Le `+1` correspond <br>au premier octet de l’adresse (partie basse).  
   Ainsi, modifier `(SCENE_ACTUEL+1)` et `(SCENE_ACTUEL+2)` (implicitement via le mot) change la cible du saut.
 
 #### Étape 6 : Saut vers l’initialisation (tail‑call)
@@ -130,7 +131,7 @@ RET
 ```
 - On empile l’adresse de `F_SCENE_xxx_INITIALISATION`.
 - Le `RET` dépile cette adresse et y saute.  
-  **Résultat** : La routine ne retourne pas à l’appelant ; elle passe directement à l’initialisation de la nouvelle scène. C’est une optimisation de type *tail‑call* (économie d’un `JP`).
+  **Résultat** : La routine ne retourne pas à l’appelant ; elle passe directement à l’initialisation de la nouvelle scène. <br>C’est une optimisation de type *tail‑call* (économie d’un `JP`).
 
 ---
 
@@ -232,7 +233,7 @@ Découpage des instructions (approximatif) :
 | Déplacements et étiquettes | ~5 |
 | **Total** | **44** |
 
-La routine est très compacte pour un chargeur de scène générique, grâce à une gestion efficace des adresses et à l’utilisation d’un `RET` astucieux pour le saut final.
+La routine est très compacte pour un chargeur de scène générique, grâce à une gestion efficace des adresses <br>et à l’utilisation d’un `RET` astucieux pour le saut final.
 
 ---
 
@@ -246,7 +247,7 @@ Elle offre :
 - ✅ Une **transition instantanée** vers la nouvelle scène.
 - ✅ Un code **compact** et **rapide** (44 octets).
 
-En combinant cette routine avec une table de scènes bien structurée et un dispatcher IM1 robuste, vous obtenez un squelette de programme flexible et fiable pour l’Amstrad CPC.
+En combinant cette routine avec une table de scènes bien structurée et un dispatcher IM1 robuste, <br>vous obtenez un squelette de programme flexible et fiable pour l’Amstrad CPC.
 
 ---
 
