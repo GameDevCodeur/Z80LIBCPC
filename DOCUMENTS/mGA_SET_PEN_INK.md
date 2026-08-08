@@ -106,9 +106,7 @@ LD   D, 0        ; compteur de stylo
     CP   16
     JR   NZ, .loop
 ```
-
 ### 5.2. Changer la bordure
-
 ```z80
 LD  A, GA_PEN_BORDER
 LD  B, HI(GA_PORT)
@@ -156,38 +154,35 @@ mGA_SET_PEN_INK
 ---
 ### 7.1 Liste des 27 couleurs 
 
-HW_BLACK
-HW_BLUE
-HW_BRIGHT_BLUE
-HW_RED
-HW_MAGENTA
-HW_MAUVE
-HW_BRIGHT_RED
-HW_PURPLE
-HW_BRIGHT_MAGENTA
-HW_GREEN
-HW_CYAN
-HW_SKY_BLUE
-HW_YELLOW
-HW_WHITE
-HW_PASTEL_BLUE
-HW_ORANGE
-HW_PINK
-HW_PASTEL_MAGENTA
-HW_BRIGHT_GREEN
-HW_SEA_GREEN
-HW_BRIGHT_CYAN
-HW_LIME_GREEN
-HW_PASTEL_GREEN
-HW_PASTEL_CYAN
-HW_BRIGHT_YELLOW
-HW_PASTEL_YELLOW
-HW_BRIGHT_WHITE
-
+HW_BLACK<BR>
+HW_BLUE<BR>
+HW_BRIGHT_BLUE<BR>
+HW_RED<BR>
+HW_MAGENTA<BR>
+HW_MAUVE<BR>
+HW_BRIGHT_RED<BR>
+HW_PURPLE<BR>
+HW_BRIGHT_MAGENTA<BR>
+HW_GREEN<BR>
+HW_CYAN<BR>
+HW_SKY_BLUE<BR>
+HW_YELLOW<BR>
+HW_WHITE<BR>
+HW_PASTEL_BLUE<BR>
+HW_ORANGE<BR>
+HW_PINK<BR>
+HW_PASTEL_MAGENTA<BR>
+HW_BRIGHT_GREEN<BR>
+HW_SEA_GREEN<BR>
+HW_BRIGHT_CYAN<BR>
+HW_LIME_GREEN<BR>
+HW_PASTEL_GREEN<BR>
+HW_PASTEL_CYAN<BR>
+HW_BRIGHT_YELLOW<BR>
+HW_PASTEL_YELLOW<BR>
+HW_BRIGHT_WHITE<BR>
 ---
-
 ## 8. Conclusion
-
 La macro **`mGA_SET_PEN_INK`** est une brique élémentaire mais essentielle pour le contrôle des couleurs sur Amstrad CPC. Sa simplicité (deux OUT) la rend extrêmement efficace et facile à intégrer dans des boucles de dessin ou des initialisations d’écran.
 
 Elle est complémentaire à la macro `mGA_SET_MODE` (pour le mode d’interruption) et s’intègre parfaitement dans une bibliothèque de macros dédiée au Gate Array.
