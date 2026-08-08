@@ -119,7 +119,6 @@ mGA_SET_PEN_INK (VOID)
 
 | Point d’attention | Recommandation |
 | :--- | :--- |
-| **Valeur de C** | La macro n’initialise pas `C`. L’utilisateur doit le définir avant l’appel, généralement à `0x00`. Si `C` contient une autre valeur, l’écriture pourrait affecter un registre différent du Gate Array. |
 | **Registres modifiés** | La macro ne modifie aucun registre (elle lit `A`, `D`, `B`, `C` mais ne les altère pas). |
 | **Ordre des écritures** | La première écriture (`OUT (C),A`) sélectionne le registre, la seconde écrit la donnée. Il est impératif de respecter cet ordre. |
 | **Validité des valeurs** | Assurez-vous que `A` est dans [0..16] et `D` dans [0..15]. Des valeurs hors plage peuvent provoquer un comportement indéfini du Gate Array. |
