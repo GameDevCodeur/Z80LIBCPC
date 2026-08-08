@@ -121,10 +121,8 @@ mGA_SET_PEN_INK (VOID)
 | :--- | :--- |
 | **Registres modifiés** | La macro ne modifie aucun registre (elle lit `A`, `D`, `B`, `C` mais ne les altère pas). |
 | **Ordre des écritures** | La première écriture (`OUT (C),A`) sélectionne le registre, la seconde écrit la donnée. Il est impératif de respecter cet ordre. |
-| **Validité des valeurs** | Assurez-vous que `A` est dans [0..16] et `D` une couleur Hardware. 
-Des valeurs hors plage peuvent provoquer un comportement indéfini du Gate Array. |
-| **Portabilité** | Cette macro est spécifique à l’Amstrad CPC. 
-Elle ne fonctionnera pas sur d’autres machines Z80 sans adaptation. |
+| **Validité des valeurs** | Assurez-vous que `A` est dans [0..16] et `D` une couleur Hardware. Des valeurs hors plage peuvent provoquer un comportement indéfini du Gate Array. |
+| **Portabilité** | Cette macro est spécifique à l’Amstrad CPC. Elle ne fonctionnera pas sur d’autres machines Z80 sans adaptation. |
 
 ---
 
