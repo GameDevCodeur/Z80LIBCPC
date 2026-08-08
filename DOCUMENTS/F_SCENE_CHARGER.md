@@ -11,8 +11,8 @@
 
 ## 1. Introduction
 
-La routine **`F_SCENE_CHARGER`** est un **chargeur de scène** (scene dispatcher) pour un programme structuré 
-en états (menus, jeu, écrans de chargement, etc.).
+La routine **`F_SCENE_CHARGER`** est un **chargeur de scène** (scene dispatcher)
+pour un programme structuré en états (menus, jeu, écrans de chargement, etc.).
 
 Elle assure la transition entre deux scènes en :
 
