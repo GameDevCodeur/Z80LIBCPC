@@ -91,7 +91,6 @@ Cependant, pour fonctionner correctement, l’utilisateur doit s’assurer que :
 ColorTable: DEFB ......
 
 LD   B, HI(GA_PORT)
-LD   C, 0
 LD   HL, ColorTable
 LD   D, 0        ; compteur de stylo
 .loop:
