@@ -40,7 +40,7 @@ La routine est très compacte (14 octets) et rapide, car elle utilise une boucle
 
 ### 3.1. Logique de la boucle
 
-La routine exploite le fait que les numéros d’encres vont de **0 à 16** (16 pour la bordure).  
+La routine exploite le fait que les stylos vont de **0 à 16** (16 pour la bordure).  
 Elle utilise le registre `A` comme compteur, initialisé à **17**, et décrémente `A` en début de boucle pour parcourir les valeurs **16, 15, ..., 0**.
 
 ```z80
