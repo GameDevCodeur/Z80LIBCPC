@@ -68,9 +68,6 @@ La routine utilise la macro `mGA_SET_PEN_INK` qui s’attend à trouver :
 - `A` = numéro de stylo (ici, décrémenté de 16 à 0).
 - `D` = couleur matérielle (ici, `HW_BLACK`).
 - `B` = octet haut du port GA (`HI(GA_PORT)`, généralement `0x7F`).
-- `C` = octet bas du port GA (doit être pré‑initialisé, généralement à `0x00`). **Attention** : la routine ne modifie pas `C`, il doit donc déjà contenir la bonne valeur (ex: `0x00`) avant l’appel, ou bien la macro doit être adaptée. Dans la version fournie, la macro utilise `OUT (C), A` et `OUT (C), D`, donc `C` doit pointer sur le bon registre du GA.
-
-> **Note** : Si la macro `mGA_SET_PEN_INK` ne définit pas `C` elle‑même (ce qui est le cas ici), l’appelant doit s’assurer que `BC` pointe correctement sur le port du Gate Array. Dans le code présenté, `B` est chargé, mais `C` n’est pas modifié. Il est donc implicite que `C` est déjà positionné (`0x00`) avant l’appel de `F_ETEINDRE_ENCRES`.
 
 ### 3.3. Code assembleur complet
 
