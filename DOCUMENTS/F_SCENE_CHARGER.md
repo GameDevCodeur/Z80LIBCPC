@@ -1,5 +1,4 @@
 
-````markdown
 # 📘 Documentation technique : Routine `F_SCENE_CHARGER`
 
 **Auteur** : Analyse personnalisée pour développement Z80 / Amstrad CPC  
