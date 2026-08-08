@@ -16,7 +16,7 @@ pour un programme structuré en états (menus, jeu, écrans de chargement, etc.)
 
 Elle assure la transition entre deux scènes en :
 
-1. **Invalidant** le vecteur d’interruption IM1 courant (pour éviter tout appel intempestif pendant le changement).
+1. **Invalidant** le vecteur d’interruption IM1 couran (pour éviter tout appel intempestif pendant le changement).
 2. **Cherchant** dans une table (`SCENE_TABLE`) l’entrée correspondant à l’identifiant fourni.
 3. **Mettant à jour** les pointeurs de la scène active (`SCENE_ACTUEL`) et du tableau IM1 associé.
 4. **Sautant** directement vers la routine d’initialisation de la nouvelle scène (sans retourner à l’appelant).
