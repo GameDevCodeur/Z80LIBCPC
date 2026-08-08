@@ -22,12 +22,12 @@ Cette macro est conçue pour être utilisée dans des programmes graphiques ou s
 | :--- | :--- |
 | **Nom** | `mGA_SET_PEN_INK` |
 | **Paramètres** | Aucun (macro sans paramètre) |
-| **Entrées** | `A` = numéro de stylo (0‑15 pour les encres, 16 pour la bordure)<br>`D` = couleur matérielle (valeur 0‑15 correspondant à la teinte)<br>`B` = octet haut du port Gate Array (généralement `0x7F`)<br>`C` = octet bas du port Gate Array (généralement `0x00`) |
+| **Entrées** | `A` = numéro de stylo (0‑15 pour les encres, 16 pour la bordure)<br>`D` = couleur matérielle.<br>`B` = octet haut du port Gate Array (généralement `0x7F`) |
 | **Sortie** | Aucune |
 | **Registres détruits** | Aucun (les registres sont lus mais pas modifiés) |
 | **Taille du code généré** | 4 octets (deux instructions `OUT (C),r`) |
 | **Dépendance** | Aucune |
-| **Note** | La macro suppose que `BC` pointe déjà sur le port Gate Array (haute partie fixe, basse partie configurée pour le registre d’encre). |
+| **Note** | La macro suppose que `B` pointe déjà sur le port Gate Array. |
 
 ---
 
@@ -48,30 +48,26 @@ Le port reste le même pour les deux écritures (`0x7F00`). La première écritu
 La macro se contente de deux instructions :
 
 ```z80
-OUT (C), A      ; Écrit la valeur de A (numéro de stylo) dans le port pointé par BC
+OUT (C), A      ; Écrit la valeur de A (numéro de stylo) dans le port pointé par B
 OUT (C), D      ; Écrit la valeur de D (couleur) dans le même port
 ```
-
-**Important** : Le registre `C` doit contenir l’octet bas du port (généralement `0x00`). Si `C` est différent, l’écriture pourrait affecter un autre registre du Gate Array ou un autre périphérique.
 
 ### 3.3. Exemple d’utilisation typique
 
 ```z80
-; Configuration du port GA : B = 0x7F, C = 0x00
-LD   B, $7F
-LD   C, $00
+; Configuration du port GA : B = 0x7F
+LD  B, HI(GA_PORT)
 
-; Choisir le stylo 5 et lui attribuer la couleur 3 (cyan)
-LD   A, 5
-LD   D, 3
+; Choisir le stylo 5 et lui attribuer la couleur D
+LD   A, PEN_5
+LD   D, HW_BRIGHT_WHITE
 mGA_SET_PEN_INK
 ```
 
 **Remarque** :  
 - Le numéro de stylo `A` peut aller de 0 à 15 pour les encres logiques, et 16 pour la bordure.  
-- La couleur `D` est une valeur matérielle (0‑15) correspondant aux couleurs de base du CPC :  
-  0 = noir, 1 = bleu, 2 = rouge, 3 = magenta, 4 = vert, 5 = cyan, 6 = jaune, 7 = blanc, 8‑15 = versions plus claires selon le mode.
-
+- La couleur `D` est une valeur matérielle correspondant aux couleurs hardware du CPC.
+  
 ---
 
 ## 4. Dépendances et configuration
@@ -92,17 +88,17 @@ Cependant, pour fonctionner correctement, l’utilisateur doit s’assurer que :
 
 ```z80
 ; Table des couleurs pour les 16 stylos
-ColorTable: DB 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15
+ColorTable: DEFB ......
 
-LD   B, $7F
-LD   C, $00
+LD   B, HI(GA_PORT)
+LD   C, 0
 LD   HL, ColorTable
 LD   D, 0        ; compteur de stylo
 .loop:
     LD   A, D
     LD   E, (HL)  ; couleur
     PUSH DE
-    mGA_SET_PEN_INK
+    mGA_SET_PEN_INK (VOID)
     POP  DE
     INC  D
     INC  HL
@@ -114,13 +110,11 @@ LD   D, 0        ; compteur de stylo
 ### 5.2. Changer la bordure
 
 ```z80
-LD   A, 16       ; numéro de bordure
-LD   D, 7        ; couleur blanche
-LD   B, $7F
-LD   C, $00
-mGA_SET_PEN_INK
+LD  A, GA_PEN_BORDER
+LD  B, HI(GA_PORT)
+LD  D, HW_BRIGHT_WHITE
+mGA_SET_PEN_INK (VOID)
 ```
-
 ---
 
 ## 6. Précautions et bonnes pratiques
@@ -145,20 +139,50 @@ Exemple :
 
 ```z80
 ; Initialisation une fois
-LD   B, $7F
-LD   C, $00
+LD   B, HI(GA_PORT)
+LD   C, #00
 
-; Définir stylo 0 = noir
-LD   A, 0
-LD   D, 0
-mGA_SET_PEN_INK
+; Définir stylo noir
+LD   A, GA_PEN_0
+LD   D, HW_BLACK
+mGA_SET_PEN_INK (VOID)
 
-; Définir stylo 1 = bleu
-LD   A, 1
-LD   D, 1
+; Définir stylo bleu
+LD   A, GA_PEN_1
+LD   D, HW_BLUE
 mGA_SET_PEN_INK
 ; ...
 ```
+---
+### 7.1 Liste des 27 couleurs 
+
+HW_BLACK
+HW_BLUE
+HW_BRIGHT_BLUE
+HW_RED
+HW_MAGENTA
+HW_MAUVE
+HW_BRIGHT_RED
+HW_PURPLE
+HW_BRIGHT_MAGENTA
+HW_GREEN
+HW_CYAN
+HW_SKY_BLUE
+HW_YELLOW
+HW_WHITE
+HW_PASTEL_BLUE
+HW_ORANGE
+HW_PINK
+HW_PASTEL_MAGENTA
+HW_BRIGHT_GREEN
+HW_SEA_GREEN
+HW_BRIGHT_CYAN
+HW_LIME_GREEN
+HW_PASTEL_GREEN
+HW_PASTEL_CYAN
+HW_BRIGHT_YELLOW
+HW_PASTEL_YELLOW
+HW_BRIGHT_WHITE
 
 ---
 
