@@ -136,7 +136,6 @@ Exemple :
 ```z80
 ; Initialisation une fois
 LD   B, HI(GA_PORT)
-LD   C, #00
 
 ; Définir stylo noir
 LD   A, GA_PEN_0
