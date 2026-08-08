@@ -1,7 +1,7 @@
 
 # 📘 Documentation technique : Macro `mGA_SET_PEN_INK`
 
-**Auteur** : Analyse personnalisée pour développement Z80 / Amstrad CPC  
+**Auteur** : Patrick MAES - Analyse personnalisée pour développement Z80 / Amstrad CPC  
 **Version** : 1.0  
 **Date** : 2026-08-07  
 **Assembleur** : RASM (ou compatible)  
