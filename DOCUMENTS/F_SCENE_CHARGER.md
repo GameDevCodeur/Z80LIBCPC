@@ -318,4 +318,3 @@ Elle s’intègre parfaitement dans un projet structuré en scènes et constitue
 *Références :*  
 - Documentation technique Z80 (cycles d’exécution).  
 - Amstrad CPC system programming guides.
-````
