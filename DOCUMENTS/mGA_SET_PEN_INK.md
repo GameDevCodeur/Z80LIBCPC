@@ -61,7 +61,7 @@ LD  B, HI(GA_PORT)
 ; Choisir le stylo 5 et lui attribuer la couleur D
 LD   A, PEN_5
 LD   D, HW_BRIGHT_WHITE
-mGA_SET_PEN_INK
+mGA_SET_PEN_INK (VOID)
 ```
 
 **Remarque** :  
