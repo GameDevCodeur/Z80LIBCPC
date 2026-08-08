@@ -1,7 +1,7 @@
 
 # 📘 Documentation technique : Routine `F_SCENE_CHARGER` (version optimisée)
 
-**Auteur** : Analyse personnalisée pour développement Z80 / Amstrad CPC  
+**Auteur** : Patrick MAES : Analyse personnalisée pour développement Z80 / Amstrad CPC  
 **Version** : 2.0 (optimisée)  
 **Date** : 2026-08-08  
 **Assembleur** : RASM (ou compatible)  
@@ -155,29 +155,9 @@ JP   (HL)
 
 ---
 
-## 6. Diagramme de flux
+## 6. Dépendances et configuration
 
-```mermaid
-graph TD
-    A[Début] --> B[Invalider IM1_INDEX]
-    B --> C{ID < SCENE_TABLE_COUNT?}
-    C -- Non --> D[RET (ID invalide)]
-    C -- Oui --> E[Calculer HL = SCENE_TABLE + ID*6]
-    E --> F[Lire 1er DW dans BC<br>(F_SCENE_xxx)]
-    F --> G[Lire 2e DW dans DE<br>(ARRAY_IM1_xxx)]
-    G --> H[Stocker DE dans IM1_CURRENT]
-    H --> I[Lire 3e DW dans DE<br>(F_SCENE_xxx_INIT)]
-    I --> J[Stocker BC dans SCENE_ACTUEL+1]
-    J --> K[EX DE, HL]
-    K --> L[JP (HL) vers INIT]
-    L --> M[Fin (non retour)]
-```
-
----
-
-## 7. Dépendances et configuration
-
-### 7.1. Variables système
+### 6.1. Variables système
 
 | Symbole | Type | Exemple de définition | Rôle |
 | :--- | :--- | :--- | :--- |
@@ -185,7 +165,7 @@ graph TD
 | `IM1_CURRENT` | 2 octets | `IM1_CURRENT: DW 0` | Pointeur vers le tableau IM1 actif. |
 | `SCENE_ACTUEL` | 3 octets | `SCENE_ACTUEL: JP 0` | Instruction de saut vers la scène active. |
 
-### 7.2. Constantes et table
+### 6.2. Constantes et table
 
 | Symbole | Type | Exemple de définition | Rôle |
 | :--- | :--- | :--- | :--- |
@@ -193,7 +173,7 @@ graph TD
 | `SCENE_TABLE` | Étiquette | `SCENE_TABLE:` | Début de la table des scènes (6 octets par entrée). |
 | `SCENE_TABLE_COUNT` | Constante | `SCENE_TABLE_COUNT EQU 3` | Nombre total de scènes. |
 
-### 7.3. Exemple de table
+### 6.3. Exemple de table
 
 ```z80
 SCENE_TABLE:
@@ -214,9 +194,9 @@ SCENE_TABLE_COUNT EQU 3
 
 ---
 
-## 8. Exemples d’utilisation
+## 7. Exemples d’utilisation
 
-### 8.1. Appel depuis une routine système
+### 7.1. Appel depuis une routine système
 
 ```z80
 ; Passer à la scène "JEU" (ID = 1)
@@ -225,7 +205,7 @@ CALL F_SCENE_CHARGER
 ; La routine ne revient PAS ici – elle saute vers F_SCENE_JEU_INIT
 ```
 
-### 8.2. Appel avec ID invalide
+### 7.2. Appel avec ID invalide
 
 ```z80
 LD   B, 5          ; ID inexistant (SCENE_TABLE_COUNT = 3)
@@ -234,7 +214,7 @@ CALL F_SCENE_CHARGER
 ; IM1_INDEX reste à IM1_NOT_READY, donc les interruptions IM1 sont désactivées.
 ```
 
-### 8.3. Structure du dispatcher IM1
+### 7.3. Structure du dispatcher IM1
 
 Pour que l’invalidation fonctionne, le dispatcher IM1 doit vérifier `IM1_INDEX` :
 
@@ -249,7 +229,7 @@ F_IM1_DISPATCH:
 
 ---
 
-## 9. Analyse des performances
+## 8. Analyse des performances
 
 | Critère | Version originale (PUSH/POP) | Version optimisée (BC + EX/JP) |
 | :--- | :--- | :--- |
@@ -262,7 +242,7 @@ F_IM1_DISPATCH:
 
 ---
 
-## 10. Précautions et bonnes pratiques
+## 9. Précautions et bonnes pratiques
 
 | Point d’attention | Recommandation |
 | :--- | :--- |
@@ -275,7 +255,7 @@ F_IM1_DISPATCH:
 
 ---
 
-## 11. Conclusion
+## 10. Conclusion
 
 La routine **`F_SCENE_CHARGER`** (version optimisée) est un chargeur de scènes **rapide, compact et robuste**.  
 Elle tire parti de techniques avancées d’optimisation Z80 :
@@ -289,7 +269,7 @@ Avec une taille d’environ 37 octets et un temps d’exécution réduit, elle s
 
 ---
 
-## 12. Historique des versions
+## 11. Historique des versions
 
 | Version | Date | Auteur | Changements |
 | :--- | :--- | :--- | :--- |
