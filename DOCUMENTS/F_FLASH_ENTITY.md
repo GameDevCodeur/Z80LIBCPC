@@ -35,7 +35,7 @@ Offset   Nom            Type      Description
 +0       Counter        uint8_t   Compteur courant (décrémenté)
 +1       CounterValue   uint8_t   Valeur de recharge (période)
 +2       State          uint8_t   État courant (0 = ColorA, 1 = ColorB)
-+3       Pen            uint8_t   Stylo Gate Array (#40 | n°_stylo)
++3       Pen            uint8_t   Stylo Gate Array (n°_stylo)
 +4       ColorA         uint8_t   Couleur état 0 (format Gate Array)
 +5       ColorB         uint8_t   Couleur état 1 (format Gate Array)
 ─────────────────────────────────────────────────────────────
@@ -48,8 +48,8 @@ Le Gate Array du CPC est sélectionné lorsque **A15=0, A14=1, A10=1**. Le port 
 
 | Commande | Format | Exemple |
 |----------|--------|---------|
-| Sélection stylo | `#4n` | `#42` = stylo 2 |
-| Couleur | `#nn` | `#1A` = couleur 26 (rouge vif) |
+| Sélection stylo | `nn` | `2` = stylo 2 |
+| Couleur | HARDWARE | `HW_BLACK` = couleur Black |
 
 ---
 
