@@ -293,10 +293,3 @@ MAIN_LOOP:
 │  + Sortie rapide si compteur actif      │
 └─────────────────────────────────────────┘
 ```
-"""
-
-with open('/mnt/agents/output/F_UPDATE_FLASH_ENTITY.md', 'w', encoding='utf-8') as f:
-    f.write(markdown_content)
-
-print("Fichier créé : /mnt/agents/output/F_UPDATE_FLASH_ENTITY.md")
-print(f"Taille : {len(markdown_content)} caractères")
