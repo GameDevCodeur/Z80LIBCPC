@@ -2,9 +2,10 @@
 ; =============================================================================
 ; FONCTION Z80LIBv00
 ; =============================================================================
-AABB_CHECK = 0                                ; 0 - Inactive
-IM1_SCAN_KEYBOARD = 1                         ; 0 - Inactive 
-ZX0_DECOMPRESS = 1                            ; 0 - Inactive 
+ID_AABB_CHECK = 0                                ; 0 - Inactive
+ID_FLASH_ENTITY = 1                              ; 0 - Inactive 
+ID_IM1_SCAN_KEYBOARD = 1                         ; 0 - Inactive 
+ID_ZX0_DECOMPRESS = 1                            ; 0 - Inactive 
 
 ; =============================================================================
 ; PARAMETRES Z80LIB PARAMETRABLES
