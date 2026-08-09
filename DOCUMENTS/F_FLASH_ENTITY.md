@@ -60,7 +60,6 @@ Le Gate Array du CPC est sélectionné lorsque **A15=0, A14=1, A10=1**. Le port 
 | Registre | Description |
 |----------|-------------|
 | `HL` | Adresse de `Counter` (offset +0 de la structure) |
-| `B` | Doit valoir `#7F` (port Gate Array) à l'appel |
 
 ### Sorties
 
@@ -249,12 +248,12 @@ Aucun `PUSH`/`POP` n'est utilisé. La routine est **entièrement réentrante** e
 
     ; Dans la boucle principale (VBL)
 MAIN_LOOP:
-    LD   B, #7F                  ; Port Gate Array
+
     LD   HL, ENTITY_PLAYER_PEN
-    CALL F_UPDATE_FLASH_ENTITY
+    CALL F_FLASH_ENTITY
     
     LD   HL, ENTITY_ENEMY_PEN
-    CALL F_UPDATE_FLASH_ENTITY
+    CALL F_FLASH_ENTITY
     
     ; ... autres entités
     
