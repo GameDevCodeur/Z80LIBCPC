@@ -1,5 +1,5 @@
 
-markdown_content = """# F_UPDATE_FLASH_ENTITY
+markdown_content = """# F_FLASH_ENTITY
 
 ## Routine de gestion du clignotement Gate Array (Amstrad CPC)
 
@@ -21,7 +21,7 @@ markdown_content = """# F_UPDATE_FLASH_ENTITY
 
 ## Description
 
-`F_UPDATE_FLASH_ENTITY` gère le clignotement périodique d'un stylo (pen) sur Amstrad CPC. Elle implémente un **compteur décroissant** avec recharge automatique et **bascule d'état binaire** (0/1) pilotant l'alternance entre deux couleurs (ColorA / ColorB).
+`F_FLASH_ENTITY` gère le clignotement périodique d'un stylo (pen) sur Amstrad CPC. Elle implémente un **compteur décroissant** avec recharge automatique et **bascule d'état binaire** (0/1) pilotant l'alternance entre deux couleurs (ColorA / ColorB).
 
 Le mécanisme repose sur une structure de données de 6 octets en RAM. La routine est conçue pour être appelée à chaque frame (VBL) ou à une fréquence fixe par le moteur de jeu.
 
@@ -89,7 +89,7 @@ DE, IX, IY
 ## Code source commenté
 
 ```asm
-F_UPDATE_FLASH_ENTITY
+F_FLASH_ENTITY
 
     ; ─── Test compteur ───────────────────────────────────
     DEC  (HL)                    ; Counter--
@@ -284,7 +284,7 @@ MAIN_LOOP:
 
 ```
 ┌─────────────────────────────────────────┐
-│  F_UPDATE_FLASH_ENTITY                  │
+│  F_FLASH_ENTITY                  │
 │  28 octets · 31-172 T-states · 0 pile   │
 │                                         │
 │  + Compteur décroissant avec reload     │
