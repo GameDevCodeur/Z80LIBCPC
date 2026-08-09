@@ -75,7 +75,7 @@ Le Gate Array du CPC est sélectionné lorsque **A15=0, A14=1, A10=1**. Le port 
 ### Registres détruits
 
 ```
-AF, BC
+AF, B
 ```
 
 ### Registres préservés
@@ -115,9 +115,9 @@ F_FLASH_ENTITY
     ; ─── Sélection stylo Gate Array ────────────────────
     INC  HL                      ; HL = Pen (+3)
 
-    LD   B, #7F                  ; Port Gate Array (#7Fxx)
-    LD   C, (HL)                 ; C = Pen (#4n)
-    OUT  (C), C                  ; Sélection du stylo
+    LD   B, HI(GA_PORT)
+    LD   A,(HL)                  ; A = Pen
+    OUT  (C),A                   ; sélection du stylo
 
     ; ─── Sélection couleur ─────────────────────────────
     INC  HL                      ; HL = ColorA (+4)
@@ -154,7 +154,7 @@ Appel (HL = &Counter)
     │
     ▼
 ┌─────────────┐
-│  OUT (C),C  │  Sélection stylo (Pen)
+│  OUT (C),A  │  Sélection stylo (Pen)
 └─────────────┘
     │
     ▼
@@ -199,8 +199,8 @@ Appel (HL = &Counter)
 | | `RRA` | 4 | 85 |
 | **Stylo** | `INC HL` | 6 | 91 |
 | | `LD B,#7F` | 7 | 98 |
-| | `LD C,(HL)` | 7 | 105 |
-| | `OUT (C),C` | 12 | 117 |
+| | `LD A,(HL)` | 7 | 105 |
+| | `OUT (C),A` | 12 | 117 |
 | **Couleur (état 0)** | `INC HL` | 6 | 123 |
 | | `LD A,(HL)` | 7 | 130 |
 | | `JR NC` (pris) | 12 | 142 |
@@ -218,19 +218,13 @@ Appel (HL = &Counter)
 
 ## Points techniques
 
-### 1. `OUT (C), C` — L'opcode oublié
-
-La sélection du stylo utilise `OUT (C), C` (`#ED #71`), non `OUT (C), A`. Cet opcode du Z80 est rarement utilisé mais parfaitement adapté ici : il envoie **C** sur le bus de données vers le port **BC**.
-
-Comme le Gate Array ne décode que `A15-A10`, le fait que `C` contienne le numéro de stylo (`#4n`) et que `B = #7F` suffit. Cela évite le transfert `LD A, C / OUT (C), A` et économise **2 octets et 7 T-states**.
-
-### 2. Chargement spéculatif de ColorA
+### 1. Chargement spéculatif de ColorA
 
 Avant de connaître l'état final ( Carry après `RRA` ), la routine charge systématiquement `ColorA`. Si `Carry = 0`, le `JR NC` saute directement à l'écriture. Si `Carry = 1`, deux instructions supplémentaires chargent `ColorB`.
 
 C'est un **branch prediction hardware du Z80** : l'état 0 est légèrement privilégié (9 T-states de moins). Si vos entités passent plus de temps dans un état que l'autre, placez la couleur dominante en `ColorA`.
 
-### 3. Absence de pile
+### 2. Absence de pile
 
 Aucun `PUSH`/`POP` n'est utilisé. La routine est **entièrement réentrante** et peut être appelée depuis une interruption (IM1/IM2) sans risque de corruption de pile.
 
