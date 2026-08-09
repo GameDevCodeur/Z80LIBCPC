@@ -43,9 +43,9 @@
 
 | Phase | Intitulé | Livrables & Objectifs |
 | :--- | :--- | :--- |
-| *Phase 1* | **Scène Titre** | Intégration Scene Titre - Affichage image titre 3 secondes. |
-| *Phase 2* | **Scène Menu** | Intégration Scene Menu - Affichage Logo avec Text Clignotant. |
-| *Phase 3* | **Scène GamePlay** | Intégration Scene GamePlay. |
+| *Phase 1* | **Scène Titre** | Intégration Scène Titre - Affichage image titre 3 secondes. |
+| *Phase 2* | **Scène Menu** | Intégration Scène Menu - Affichage Logo avec Text Clignotant. |
+| *Phase 3* | **Scène GamePlay** | Intégration Scène GamePlay. |
 | **Phase 3.1** | **Scène GamePlay** | Scène GamePlay - Intégration d'une entitée Ball. |
 | *Phase 4* | **Scène GameOver** | Intégration Scène GameOver - fin de la partie. |
 """
