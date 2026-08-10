@@ -29,7 +29,7 @@ La routine est très compacte (14 octets) et rapide, car elle utilise une boucle
 | **Entrée** | Aucune |
 | **Sortie** | Aucune (l’écran devient noir) |
 | **Registres détruits** | `AF`, `B`, `D` |
-| **Registres préservés** | `C`, E`, `HL`, `IX`, `IY` (non utilisés) |
+| **Registres préservés** | `C`, `E`, `HL`, `IX`, `IY` (non utilisés) |
 | **Taille du code** | 14 octets |
 | **Dépendances** | `GA_PORT` (doit être défini, ex: `0x7F00`)<br>`HW_BLACK` (doit être défini)<br>Macro `mGA_SET_PEN_INK` (doit être définie) |
 | **Compatibilité** | Amstrad CPC / Gate Array uniquement |
