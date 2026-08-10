@@ -29,7 +29,7 @@ La routine est très compacte (14 octets) et rapide, car elle utilise une boucle
 | **Entrée** | Aucune |
 | **Sortie** | Aucune (l’écran devient noir) |
 | **Registres détruits** | `AF`, `B`, `D` |
-| **Registres préservés** | `BC` (sauf `B`), `DE` (sauf `D`), `HL`, `IX`, `IY` (non utilisés) |
+| **Registres préservés** | `C`, E`, `HL`, `IX`, `IY` (non utilisés) |
 | **Taille du code** | 14 octets |
 | **Dépendances** | `GA_PORT` (doit être défini, ex: `0x7F00`)<br>`HW_BLACK` (doit être défini)<br>Macro `mGA_SET_PEN_INK` (doit être définie) |
 | **Compatibilité** | Amstrad CPC / Gate Array uniquement |
@@ -94,14 +94,6 @@ Pour que cette routine fonctionne, plusieurs éléments doivent être définis *
 | `GA_PORT` | Constante | `GA_PORT EQU 0x7F00` | Adresse de base du port Gate Array. |
 | `HW_BLACK` | Constante | `HW_BLACK` | Code matériel de la couleur noire. |
 | `mGA_SET_PEN_INK` | Macro | Doit être définie comme vu précédemment | Effectue les deux `OUT (C),r` pour écrire dans le GA. |
-| `C` | Registre | Doit être `0x00` avant l’appel | Octet bas du port GA. La routine ne le modifie pas, donc un appel préalable `LD C, 0` est nécessaire. |
-
-**Exemple d’initialisation avant l’appel :**
-
-```z80
-LD   BC, GA_PORT   ; ou LD B, HI(GA_PORT) / LD C, LO(GA_PORT)
-CALL F_ETEINDRE_ENCRES
-```
 
 ---
 
@@ -110,8 +102,6 @@ CALL F_ETEINDRE_ENCRES
 ### 5.1. Masquer l’écran avant un chargement
 
 ```z80
-; Initialisation du port GA
-LD   BC, GA_PORT   ; BC = 0x7F00 (si GA_PORT est défini)
 CALL F_ETEINDRE_ENCRES
 ; L'écran est maintenant noir.
 ; Effectuer le chargement des données...
@@ -153,7 +143,7 @@ La routine est donc extrêmement économique en mémoire, ce qui en fait un choi
 
 | Point d’attention | Recommandation |
 | :--- | :--- |
-| **Registres détruits** | La routine modifie `A`, `BC` et `D`. Si votre code appelant a besoin de ces registres, sauvegardez‑les (ex: `PUSH AF`, `PUSH BC`, `PUSH DE`). |
+| **Registres détruits** | La routine modifie `AF`, `B` et `D`. Si votre code appelant a besoin de ces registres, sauvegardez‑les (ex: `PUSH AF`, `PUSH BC`, `PUSH DE`). |
 | **Compatibilité avec les ROMs** | Le Gate Array est accessible en lecture/écriture depuis le mode système. Aucune restriction particulière. |
 | **Utilisation pendant la VBL** | Écrire dans le Gate Array n’est pas soumis à la contrainte de la VBL (contrairement à la CRTC), donc vous pouvez appeler cette routine à tout moment. |
 | **Ordre des itérations** | L’ordre (bordure puis encres 15 à 0) est sans importance pour l’effet final, mais il est choisi pour optimiser le code (décrémentation). |
@@ -165,7 +155,6 @@ La routine est donc extrêmement économique en mémoire, ce qui en fait un choi
 La routine est déjà optimale en taille (14 octets). Cependant, si vous devez **éteindre les encres très fréquemment**, vous pouvez envisager :
 
 - **Inliner le code** : si vous appelez la routine dans une boucle serrée, le `CALL`/`RET` peut être évité en copiant le code directement. Mais cela augmenterait la taille du code.
-- **Pré‑charger `BC`** : si `BC` est déjà configuré pour le GA ailleurs, vous pouvez économiser les instructions `LD B, ...` en les externalisant.
 
 ---
 
