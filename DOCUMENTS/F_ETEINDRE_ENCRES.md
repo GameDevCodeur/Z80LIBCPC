@@ -153,8 +153,7 @@ La routine est donc extrêmement économique en mémoire, ce qui en fait un choi
 
 | Point d’attention | Recommandation |
 | :--- | :--- |
-| **Valeur de `C`** | La routine ne charge pas `C` explicitement. Il est impératif que `C` contienne `0x00` (ou la valeur appropriée) avant l’appel. Sinon, les écritures pourraient affecter un mauvais registre du Gate Array. |
-| **Registres détruits** | La routine modifie `A`, `B` et `D`. Si votre code appelant a besoin de ces registres, sauvegardez‑les (ex: `PUSH AF`, `PUSH BC`, `PUSH DE`). |
+| **Registres détruits** | La routine modifie `A`, `BC` et `D`. Si votre code appelant a besoin de ces registres, sauvegardez‑les (ex: `PUSH AF`, `PUSH BC`, `PUSH DE`). |
 | **Compatibilité avec les ROMs** | Le Gate Array est accessible en lecture/écriture depuis le mode système. Aucune restriction particulière. |
 | **Utilisation pendant la VBL** | Écrire dans le Gate Array n’est pas soumis à la contrainte de la VBL (contrairement à la CRTC), donc vous pouvez appeler cette routine à tout moment. |
 | **Ordre des itérations** | L’ordre (bordure puis encres 15 à 0) est sans importance pour l’effet final, mais il est choisi pour optimiser le code (décrémentation). |
