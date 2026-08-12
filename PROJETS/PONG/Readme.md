@@ -47,6 +47,6 @@
 | *Phase 2* | **Scène Menu** | Intégration Scène Menu - Affichage Logo avec Text Clignotant. |
 | *Phase 3* | **Scène GamePlay** | Intégration Scène GamePlay. |
 | **Phase 3.1** | **Scène GamePlay** | Scène GamePlay - Intégration d'une entitée Ball. |
-| **Phase 3.2** | **Scène GamePlay** | Scène GamePlay - Intégration de l'entitée Paddle. |
+| **Phase 3.2** | **Scène GamePlay** | Scène GamePlay - Intégration de l'entitée Paddle et IA. |
 | *Phase 4* | **Scène GameOver** | Intégration Scène GameOver - fin de la partie. |
 """
