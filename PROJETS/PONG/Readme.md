@@ -48,5 +48,6 @@
 | *Phase 3* | **Scène GamePlay** | Intégration Scène GamePlay. |
 | **Phase 3.1** | **Scène GamePlay** | Scène GamePlay - Intégration de l'entitée Ball. |
 | **Phase 3.2** | **Scène GamePlay** | Scène GamePlay - Intégration des entitées Paddle et Mur. |
+| **Phase 3.3** | **Scène GamePlay** | Scène GamePlay - Intégration de l'entitée Score. |
 | *Phase 4* | **Scène GameOver** | Intégration Scène GameOver - fin de la partie. |
 """
