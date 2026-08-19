@@ -46,8 +46,12 @@
 | *Phase 1* | **Scène Titre** | Intégration Scène Titre - Affichage image titre 3 secondes. |
 | *Phase 2* | **Scène Menu** | Intégration Scène Menu - Affichage Logo avec Text Clignotant. |
 | *Phase 3* | **Scène GamePlay** | Intégration Scène GamePlay. |
-| **Phase 3.1** | **Scène GamePlay** | Scène GamePlay - Intégration de l'entitée Ball. |
-| **Phase 3.2** | **Scène GamePlay** | Scène GamePlay - Intégration des entitées Paddle et Mur. |
-| **Phase 3.3** | **Scène GamePlay** | Scène GamePlay - Intégration de l'entitée Score. |
+| **Phase 3.1** | **Scène GamePlay** | Scène GamePlay - Intégration Affichage entitée Ball. |
+| **Phase 3.2** | **Scène GamePlay** | Scène GamePlay - Intégration Affichage entités Paddle et Mur. |
+| **Phase 3.3** | **Scène GamePlay** | Scène GamePlay - Intégration Affichage Scores. |
+| **Phase 3.4** | **Scène GamePlay** | Scène GamePlay - Intégration Logique Paddle. |
+| **Phase 3.5** | **Scène GamePlay** | Scène GamePlay - Intégration Logique Ball. |
+| **Phase 3.6** | **Scène GamePlay** | Scène GamePlay - Intégration Logique IA. |
+| **Phase 3.6** | **Scène GamePlay** | Scène GamePlay - Intégration Logique Scores. |
 | *Phase 4* | **Scène GameOver** | Intégration Scène GameOver - fin de la partie. |
 """
