@@ -15,7 +15,7 @@
 | :--- | :--- |
 | **Nom du Projet** | PONG Z80 (Mode 0 Custom) |
 | **Plateforme Cible** | Amstrad CPC 464 / 664 / 6128 |
-| **Langage & Toolchain** | Assembleur Z80 (RASM / SJASMPLUS) |
+| **Langage & Toolchain** | Assembleur Z80 (RASM) |
 | **Mode d'Affichage** | Mode 0 Custom ($128 \\times 192$ pixels, 16 couleurs) |
 | **Consommation VRAM** | 12 Ko (Économie de 25% par rapport au $160 \\times 200$ standard) |
 | **Cadencement Frame Rate** | 50 Hz constants (Synchronisation VBL / CRTC 6845) |
