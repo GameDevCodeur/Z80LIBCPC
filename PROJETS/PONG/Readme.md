@@ -34,7 +34,7 @@
 ## 🛠️ Architecture Technique
 
 * **Gestion Graphique (CRTC) :** Reconfiguration des registres ($R1=32$, $R6=24$) pour un affichage fenêtré $128 \\times 192$ pixels.
-* **Système d'Entrées :** Prise en charge simultanée du clavier (touches QA / OP) et du joystick via l'interrogation directe du PPI 8255 et du PSG AY-3-8912.
+* **Système d'Entrées :** Prise en charge simultanée du clavier (touches QA / LP) et du joystick via l'interrogation directe du PPI 8255 et du PSG AY-3-8912.
 * **Effets Sonores :** Bips de collision et de point marqué générés en temps réel par la puce audio AY-3-8912.
 
 ---
