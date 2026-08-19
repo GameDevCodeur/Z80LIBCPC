@@ -27,7 +27,7 @@
 * **Performance Matérielle :** Exploitation directe des registres du CRTC 6845 pour recentrer l'image et libérer des ressources mémoire.
 * **Moteur Physique sur Mesure :** Implémentation d'une détection de collision AABB 8 bits à chevauchement strict pour éliminer les bugs d'encastrement des sprites.
 * **Identité Visuelle Rétro :** Utilisation optimale de la palette 16 couleurs du Mode 0 pour offrir un rendu vivant avec des pixels $2 \\times 1$.
-* **Compatibilité Totale :** Exécution garantie sur matériel d'origine (100% compatible Amstrad CPC 464 sans extension RAM).
+* **Compatibilité Totale :** Exécution garantie sur matériel d'origine (100% compatible Amstrad CPC 464, 664, 6128 sans extension RAM).
 
 ---
 
