@@ -1,0 +1,8 @@
+Baby Jo Going Home (Level 1.1): Tile=4x16, Tiles=&7500x136, Map=255x23&428A, Indexing=Linear bytes
+The Last V8 (Level 1): Mode=1, Tile=2x8, Tiles=&3200x256, Map=128x60&4600, Indexing=Linear bytes
+Sorcery: Tile=2x8, Tiles=&6500x256, Map=40x18&3241, Indexing=Compressed RL0
+Prohibition: Tile=4x16, Tiles=&10000x1024, Map=256x32&1C000, Indexing=Linear words Big Endian
+Who Dares Wins 2: Tile=2x8, Tiles=&7800x256, Map=38xR648&0040, Indexing=Linear bytes
+Pac-Boy: Tile=4x16, Tiles=&2F80x24, Map=128x64&3AE0, Indexing=Linear bytes
+Street Machine: Tile=4x16, Tiles=&7D40x256, Map=160x110&3880, Indexing=Linear bytes
+Bruce Lee: Tile=2x8, Tiles=&1800x256, Map=40x11&2d02, Indexing=Compressed RLE or MSB Linear
