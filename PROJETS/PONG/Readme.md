@@ -44,6 +44,7 @@
 | Phase | Intitulé | Livrables & Objectifs |
 | :--- | :--- | :--- |
 | *Phase 0* | **Environnement** | Environnement - Installation des outils de programation. |
+| *Phase 0.1* | **Moteur Z80** | Z80LIB - Installation Gestionnaire de Scène & Fréquence 50Hz. |
 | *Phase 1* | **Scène Titre** | Intégration Scène Titre - Affichage image titre 3 secondes. |
 | *Phase 2* | **Scène Menu** | Intégration Scène Menu - Affichage Logo avec Text Clignotant. |
 | *Phase 3* | **Scène GamePlay** | Intégration Scène GamePlay. |
