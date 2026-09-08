@@ -1,0 +1,156 @@
+Scripts allow performing scheduled operations.
+
+I mainly use scripts, more than 400, to validate emulator behaviour (Read disks, write disks, read tape, execute demos...).
+
+
+Script example to press and release SHIFT + 'Q' key:
+KeyDown=21
+KeyDown=67
+Wait=200
+KeyUp=all
+
+All actions are performed at once until an action is expecting some time (e.g. Wait).
+
+Label are defined using ':' before label title in a single line.
+Comment can be added using ';' to start comment until end of line.
+
+
+
+
+Available instructions (alphabetical order):
+=========================
+
+- Automatic text writting
+Command: autotype=XXX
+Command: autotypeandwait=XXX
+With XXX the text until end of line
+
+
+- Test byte in RAM and branch to label if different:
+Command: diff=XXXX,YY,ZZ:label
+with XXXX the address in decimal (use & for hexa).
+with YY the value in decimal (use & for hexa).
+with ZZ the mask in decimal (use & for hexa).
+
+
+- Copy file from A to B
+Command: copyfile=filename
+
+
+- Load disk into drive A:
+- Load disk into drive B:
+Command: drivea=filename
+Command: driveb=filename
+Disk image should be located into default disk folder.
+
+
+- Eject Drive A
+- Eject Drive B
+Command: ejecta
+Command: ejectb
+
+
+- Terminate script:
+Command: end
+
+
+- Test byte in RAM and branch to label if equal:
+Command: equal=XXXX,YY,ZZ:label
+with XXXX the address in decimal (use & for hexa).
+with YY the value in decimal (use & for hexa).
+with ZZ the mask in decimal (use & for hexa).
+
+
+- Exit Emulator
+Command: exit=XX
+with XX the return code
+
+
+- Flip sides of drive A:
+Command: flipsides
+
+
+- Emulator at full speed
+Command: fullspeed
+
+
+- Press a key:
+Command: keydown=XX
+with XX the key code
+
+
+- Release a key:
+Command: keyup=XX
+with XX the key code or "all" for all keys 
+
+
+- Press Multiface 2 RESET button
+Command: mf2reset
+
+
+- Press Multiface 2 STOP button
+Command: mf2stop
+
+
+- Pause emulator:
+Command: pause
+Script is paused while emulator is paused.
+
+
+- Write a byte in RAM:
+Command: poke=XXXX,YY
+with XXXX the address in decimal (use & for hexa).
+with YY the value in decimal (use & for hexa).
+
+
+- Emulator at real speed
+Command: realspeed
+
+
+- Reset Emulator
+Command: reset
+
+
+- Swap drives A and B:
+Command: swapdrives
+
+
+- Screenshot comparison and branch to label if different
+Command: screendiff=filename:Label
+Command: screendiffmode2=filename:Label
+
+
+- Save screenshot
+Command: screenshot=filename
+Command: screenshotmode2=filename
+
+
+- Load tape
+Command: tape=filename
+Tape image should be located into default tape folder.
+
+
+- Convert tape
+Command: tape2csw=filename
+Command: tape2ppi=filename
+Command: tape2wav=filename
+For WAV conversion, tape audio WAV parameters are used.
+Converted tape file will be located where original file is.
+
+
+- Set Tape counter
+Command: tapecounter=XXX
+with XXXX the new counter value
+
+
+- Play Tape
+Command: tapeplay
+
+
+- Stop Tape
+Command: tapestop
+
+
+- Wait a while:
+Command: wait=XX
+with XX duration in ms
