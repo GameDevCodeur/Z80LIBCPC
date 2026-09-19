@@ -1,0 +1,562 @@
+Release 26.4, 1 April 2026
+==========================
+- Improve FDC emulation;
+- Populate contextual menu with most used features;
+- Improve tape audio navigation;
+- Update OpenAL Soft 1.25.1;
+- Fix minor bugs.
+
+
+Release 25.12, 26 December 2025
+==============================
+- Improve Files manager navigation;
+- Add disk filesystems support by the Files manager;
+- Fix export file bad size;
+- Replace OpenAL by OpenAL Soft;
+- Improve disk catalog display;
+- Improve Amstrad PLUS emulation;
+- Improve read of disk images;
+- Fix minor bugs.
+
+
+Release 25.5, 4 May 2025
+========================
+- Improve CRTC1 emulation (Thanks to WinAPE debugger);
+- Fix minor bugs.
+
+
+Release 25.3, 1 March 2025
+==========================
+- Preliminary review of symbols management;
+- Add possibility to export/import symbols;
+- Provide basic cartridges for PLUS settings;
+- Fix and improve WinAPE snapshot breakpoints compatibility;
+- Improve CRTC emulation (Thanks to WinAPE debugger);
+- Fix minor bugs.
+
+
+Release 24.10, 1 October 2024
+=============================
+- Allow file attributes update using the Files manager window;
+- Improve BASIC decoding;
+- Fix issues when loading protected DSK files;
+- Improve Amstrad PLUS emulation (Thanks to WinAPE debugger);
+- Improve snapshots compatibility for PLUS series;
+- Review of executed instructions trace;
+- Improve memory access breakpoints for 16 bits instructions;
+- Review of ASIC hardware sprites window;
+- Fix issues with game controllers settings;
+- Improve file loading from ZIP archives;
+- Fix minor bugs.
+
+
+Release 24.6, 14 June 2024
+==========================
+- Review of "Z80 editor" and "Code explorer" windows;
+- Introduce display of symbols;
+- Add BASIC runtime debugger;
+- Add Memory Watcher;
+- Improve BASIC decoding;
+- Fix audio problems;
+- Fix filesystem issue when adding file at the end of the disk;
+- Improve tape recording;
+- Fix minor bugs.
+
+Release 24.2, 10 February 2024
+==============================
+- Improve CRTC emulation (Thanks to WinAPE and Ace-DL debuggers);
+- Improve FDC emulation;
+- Improve memory accesses with X-Mem;
+- Improve BASIC decoding;
+- Fix minor bugs.
+
+
+Release 23.11, 11 November 2023
+===============================
+- Add SSA-1 Speech emulation;
+- Add DK'Tronics Speech emulation;
+- Improve Tape viewer including PPI audio direct navigation;
+- Improve CRTC1 emulation (Thanks to Philippe 'Offset' Rimauro);
+- Fix minor bugs.
+
+
+Release 23.9, 27 September 2023
+===============================
+- Improve CRTC1 emulation (Thanks to WinAPE debugger);
+- Improve read of RAW disk images;
+- Improve BASIC decoding;
+- Fix minor bugs.
+
+
+Release 23.7, 10 July 2023
+==========================
+- Improve read of RAW disk images;
+- Improve read of IPF disk images;
+- Improve ROM selection for Amstrad PLUS;
+- Improve FDC emulation;
+- Improve Tape emulation;
+- Improve CRTC1 emulation (Thanks to WinAPE debugger);
+- Patch pasmo to accept weird maxam syntaxes;
+- Fix minor bugs.
+
+
+Release 23.3, 3 March 2023
+==========================
+- Improve snapshots read and write;
+- Fix regression with DMA 2 when playing Eerie forest;
+- Display fullscreen using real aspect ratio;
+- Associate cheat script to a toolbar button;
+- Improve loading of CDT tape files;
+- Fix minor bugs.
+
+
+Release 22.12, 22 December 2022
+===============================
+- Add tape convert operations into "Tape audio workshop" window;
+- Review of configurable toolbar buttons;
+- Support Albireo SD mode to share files with Windows;
+- Improve ASIC emulation;
+- Split emulator and device settings;
+- Fix minor bugs.
+
+
+Release 22.10, 12 October 2022
+==============================
+- Improve CRTC3 emulation;
+- Improve Tape forward and backward navigation;
+- Improve BASIC decoding;
+- Improve text capture;
+- Add 464 PLUS machines;
+- Record Tape to WAV;
+- Fix bad header info for created WAV;
+- Improve Tape Audio workshop;
+- Fix minor bugs.
+
+
+Release 22.6, 8 June 2022
+=========================
+- Improve Amstrad PLUS emulation;
+- Add ASIC registers windows;
+- Fix minor bugs.
+
+
+Release 22.4, 1 April 2022
+==========================
+- Improve Amstrad PLUS ASIC emulation;
+- Update some Z80 instructions behaviours;
+- Almost all keyboard shortcuts are configurable;
+- Fix minor bugs.
+
+
+Release 21.11, 11 November 2021
+===============================
+- Improve FDC Read ID function using accurate timings;
+- Introduce preliminary support of Amstrad 6128 PLUS model;
+- Show monitor boundaries;
+- Fix minor bugs.
+
+
+Release 21.6, 23 June 2021
+==========================
+- Improve loading of CDT tape files;
+- Improve CDT conversions;
+- Add Tape counter;
+- Support direct binary file load and execution;
+- Improve CRTC behaviour using Kevin Thacker tests;
+- Fix multi-origins assembler compilation issue using Pasmo;
+- Fix minor bugs.
+
+
+Release 21.4, 1 April 2021
+==========================
+- Add Z80 instructions Trace;
+- Add CDT converter to CSW and audio WAV;
+- Improve loading of CDT tape files;
+- Fix minor bugs.
+
+
+Release 21.1, 8 January 2021
+============================
+- Add Multiplay Mouse emulation;
+- Add cursor capture option to improve mouse emulation;
+- Support X-Mem SST flash memory;
+- Add Simple Poke Window;
+- Fix minor bugs.
+
+
+Release 20.12, 6 December 2020
+==============================
+- Remove Taskbar to Win32 release to keep compatibility with Windows XP;
+- Support X-Mass storage peripheral;
+- Remove X-Mem "Free" button;
+- Upgrade Graphics Explorer GUI;
+- Improve breakpoints to filter lower and upper roms;
+- Speed-up emulator shutdown;
+- AMX Mouse emulation review;
+- Add Symbiface Mouse emulation;
+- Fix minor bugs.
+
+
+Release 20.10, 11 October 2020
+==============================
+- Add Action Replay to filter RAM memory content;
+- Audio devices list review;
+- Fix some keyboard issues with CTRL key;
+- Fix crashes when CSW tape is inserted;
+- Fix autotype issues in hardware mapping mode;
+- Improve PPI emulation using Arnold PPI tests;
+- Improve Input/Output decoder with PPI settings;
+- Fix minor bugs.
+
+
+Release 20.7, 14 July 2020
+==========================
+- Patch Pasmo assembler to accept "EX HL,DE";
+- Allow up to 32 upper roms;
+- Add Memory Editor differences highlighting;
+- Allow unlimited breakpoints;
+- Fix crash at joystick removal;
+- Fix FDC head position after stepping;
+- Detect AMSDOS header when loading ROM;
+- Support X-Mem memory expansion;
+- Fix minor bugs.
+
+
+Release 20.5, 8 May 2020
+========================
+- Adaptation for Win64 platform;
+- Improve Memory Editor;
+- Change lightguns and AMX mouse shortcuts;
+- Add direct shorcut for custom speed turbo;
+- Add access to main display size zoom factor;
+- Autotyping at full speed;
+- Patch Pasmo assembler to accept "OUT (C),0", "SBC N", "ADC N", "ADD N";
+- Fix FDC Wrong Cylinder and Bad cylinder flags issue;
+- Fix minor bugs.
+
+
+Release 20.3, 25 March 2020
+===========================
+- Fix some Z80 instructions timings;
+- Fix color issue when loading snapshot;
+- Fix minor bugs.
+
+
+Release 20.2, 28 February 2020
+==============================
+- Add files extension registration;
+- Add Disk and Tape fast loading feature;
+- Add ROMDOS D1 disk format support for files management;
+- Improve split rasters display;
+- Fix minor bugs.
+
+
+Release 19.12, 27 December 2019
+===============================
+- Add preliminary BASIC decoder;
+- Add preliminary Input/Output decoder;
+- Improve loading of protected tapes;
+- Fix Z80 regression when loading 30Year Megademo but involving issues with "The Equalizor Demo";
+- Fix minor bugs.
+
+
+Beta Release 19.10, 5 October 2019
+==================================
+- Increase full speed;
+- Improve assembler compilation using Pasmo;
+- Add breakpoint on Read/Write memory accesses;
+- Fix minor bugs.
+
+
+Beta Release 19.7, 6 July 2019
+==============================
+- Update overall GUI;
+- Free CPU resources;
+- Fix CRTC1 display with "Post Scriptum" demo;
+- Fix FDC problem when using ProCopy;
+- Fix 4M RAM addressing issues;
+- Add files manager for direct operations with Windows;
+- Fix minor bugs.
+
+
+Beta Release 19.3, 19 March 2019
+================================
+- Fix FDC read failure detection;
+- Fix FDC regression to load MegaBlasters;
+- Upgrade Graphics Explorer GUI;
+- Improve Memory Editor;
+- Preliminary CT-RAW image disk read;
+- Add 4M RAM expansion;
+- Add Digiblaster audio channel;
+- Fix minor bugs.
+
+
+Beta Release 18.10, 26 October 2018
+===================================
+- Fix disk drive motor command (CPC'Crack 3 disk detection);
+- Fix Z80 bad instructions disassembly;
+- Add Code explorer using Pasmo assembler;
+- Fix FDC problem with Read Track command;
+- Fix problem with tape motor stop;
+- Add support for Multiface 2;
+- Save screenshots in PNG format;
+- Save/Restore device settings;
+- Fix CRTC regression with Pinball Dreams;
+- Fix minor bugs.
+
+
+Beta Release 18.7, 4 July 2018
+==============================
+- Fix Z80 instructions display;
+- Fix theme display at first launch;
+- Fix minor bugs.
+
+
+Beta Release 18.6, 2 June 2018
+==============================
+- Fix CRTC regression with "iMPdraw";
+- Fix VDU regression with "ThunderBlade";
+- Improve CRTC type 1 emulation;
+- Add VDU V-HOLD adjust for correct iMPdraw display;
+- Fix minor bugs.
+
+
+Beta Release 18.4, 7 April 2018
+===============================
+- Fix CRTC regression with "Turrican" but involving issues with "iMPdraw";
+- Add Audio Speaker and PlayCity  Line OUT or Internal option;
+- Add Audio PlayCity invert channels option;
+- Fix FDC regression to load "The Real Ghostbusters";
+- Add Graphics explorer and Tile editor;
+- Drop ROM file for testing purposes;
+- Fix minor bugs.
+
+
+Beta Release 17.11, 17 November 2017
+====================================
+- Fix FDC engine to pass most of Kevin Thacker's New 'acid' tests:
+  - write sector with wrong cylinder;
+  - write sector with bad cylinder;
+- Fix FDC engine to pass old Kevin Thacker's 'acid' tests for Amstrad CPC 6128 only;
+- Load disk and tape images inside ZIP from menu;
+- Update fullscreen dialog windows;
+- Add AMX Mouse simulation;
+- Improve support of second joystick;
+- Add display option to reduce text during pause;
+- Add dialogs GUI skin customization;
+- Fix minor bugs.
+
+
+Beta Release 17.5, 19 May 2017
+==============================
+- Add cheat script keywords;
+- Fix FastFDC crashes when trying to read multi-sided disk image;
+- Play CSW tape images;
+- Convert WAV to CSW tape images (see Hints);
+- Fix game controller detection issues (Xbox 360);
+- Fix FDC write sector issues;
+- Fix FDC read sector regression (Dimension6);
+- Use "Keep original aspect ratio" option for fullscreen display;
+- Add PlayCity audio channels;
+- Fix minor bugs.
+
+
+Beta Release 17.3, 17 March 2017
+================================
+- Preliminary SNR session playback;
+- Insert Caprice32 FDC engine as fast FDC;
+- Add support for DualShock 4 wireless controller;
+- Preliminary text rendering for DMP2160 Dot Matrix Printer;
+- Add scripts to help entering cheat modes;
+- Add keyboard clash phenomenon ("Ghosts" keys);
+- Add CPC 664 french machine (different hardware keyboard than UK);
+- Add recent disk images list;
+- Add favourite disk images list;
+- Add display option to keep fullscreen for next session;
+- Use custom patterns for scanlines (see Hints);
+- Add option to never update disk images;
+- Fix minor bugs.
+
+
+Beta release 0.30, 19 December 2016
+===================================
+- Fix FDC engine to pass most of Kevin Thacker's 'acid' tests;
+- Add option to cold reset at real speed (see Hints);
+- Load disk and tape images from ZIP archive file;
+- Add disk menu to manually update and reload disk image;
+- Add popup menu for direct disk drive function access;
+- Fix Tape to load "The Last Mission";
+- Fix minor bugs.
+
+
+Beta release 0.29, 14 October 2016
+==================================
+- Fix lightgun regressions;
+- Update tape auto playing;
+- Fix FDC Bad CRC faulty behaviour;
+- Fix FDC regression (Anneau de Zengara);
+- Fix command line parameters;
+- Add some more command line parameters;
+- Restore disk sides flipping to read multi-sided disk images;
+- DirectX becomes default graphics renderer;
+- Add spanish machines;
+- Update disk autorun behavior;
+- Fix IPF decoding (KickOff2);
+- Fix minor bugs.
+
+
+Beta release 0.28, 21 August 2016
+=================================
+- Fix Z80 and CRTC engines to run S&KOH demo correctly;
+- Add first implementation of CRTC type 1 (not really accurate);
+- Add command line parameters (see Hints);
+- Add double sides format;
+- Add FDC scan command;
+- Enable/Disable floppy drive to allow tape game loading ("Marmelade");
+- Add DirectX 9 graphics renderer;
+- Add option to keep original aspect ratio graphics display;
+- Fix minor bugs.
+
+
+Beta release 0.27, 2 May 2016
+=============================
+- Add Turbo mode settings (Full speed, 300%, 200%, Custom);
+- Display fullscreen including menu;
+- Update Keyboard shortcut;
+- Fix Z80 instructions;
+- Optimize Z80 instructions;
+- Add "Combat School" mode to prevent killing your joystick or keyboard;
+- Fix FDC to run "War in Middle Earth";
+- Rebuild debugger accesses;
+- Fix minor bugs.
+
+
+Beta release 0.26, 11 March 2016
+================================
+- Select audio device;
+- Fix DSK read minor bugs;
+- Fix minor bugs.
+
+
+Beta release 0.25, 22 February 2016
+===================================
+- Fix IPF read.
+
+
+Beta release 0.24, 20 February 2016
+===================================
+- Improve IPF image disk read;
+- Save modified IPF in DSK format;
+- Fix minor bugs.
+
+
+Beta release 0.23, 14 February 2016
+===================================
+- Read IPF image disk;
+- Display cassette full duration display;
+- Add cassette motor command relay sound;
+- Fix minor bugs.
+
+
+Beta release 0.22.1, 31 December 2015
+=====================================
+- Fix DSK image disk read;
+- Fix minor bugs.
+
+
+Beta release 0.22, 26 December 2015
+===================================
+- Improve Techni-Musique synthesizer audio output;
+- Add PSG debug window;
+- Fix Z80 instructions;
+- Fix CRTC regressions;
+- Fix minor bugs (TAB Key, Windows Alt+Tab...).
+
+
+Beta release 0.21, 11 December 2015
+===================================
+- Port of MEA8000 chip emutation from MESS source code;
+- Add Techni-Musique speech synthesizer debug window;
+- Add settings to adjust Techni-Musique synthesizer audio volume;
+- Add global audio volume;
+- Save fullscreen brightness.
+
+
+Beta release 0.20, 20 November 2015
+===================================
+- Import/Export of binary memory dump;
+- Remove OpenGL antialiased rendering in windowed mode;
+- Fix FDC to prevent too small GAP3;
+- Add automatic typing from clipboard;
+- Improve "Full speed" speed.
+
+
+Beta release 0.19, 6 November 2015
+==================================
+- Add "Decathlon" mode to prevent killing your joystick or keyboard;
+- Rebuild keyboard mapping window;
+- Rebuild control panel in main window;
+- Fix FDC to run "Skyx" and "Bobby Bearing".
+
+
+Beta release 0.18, 10 October 2015
+==================================
+- Add workshop to adjust cassette audio filtering;
+- Add automatic play option at cassette load.
+
+
+Beta release 0.17, 3 October 2015
+=================================
+- Add display text capture window;
+- Add 8bits & 16bits PCM WAV format audio cassette loading (Problems with cauldron);
+- Export memory dump in text format;
+- Add navigation among CDT cassette image comments.
+
+
+Beta release 0.16, 13 September 2015
+====================================
+- Add cassette play time display;
+- Add cassette motor sound;
+- override settings at DSK and CDT loading in command line execution;
+- Read SNA in command line execution.
+
+
+Intermediate releases
+=====================
+- CDT cassette image debug window;
+- Memory editor debug window;
+- Z80 registers and instructions debug window;
+- Gate array registers debug window;
+- CRTC registers debug window;
+- DSK viewer debug window;
+- FDC debug window;
+- Select CDT block to read;
+- Read CDT cassette image;
+- Step by step execution mode (for debugging);
+- Direct disk catalog;
+- ENTER key (numeric pad) detection;
+- Read and write snapshots (.SNA);
+- Additional ROMs configuration;
+- Disk drive motor sound;
+- possible Windows GDI video rendering;
+- Configuration and usage of Joysticks and Gamepads by DirectInput;
+- Fullscreen display;
+- GunStick simulation;
+- WestPhaser simulation;
+- Light Pen simulation.
+
+
+Beta release 0.1, 3 November 2014
+=================================
+- Amstrad CPC 464, 664 et 6128 (QWERTY and AZERTY);
+- 64Ko memory extention for 464 and 664;
+- Modes 0, 1 and 2 display rendering by OpenGL;
+- Color or Green Screen;
+- Emulation of all CPC keys;
+- Audio rendering by OpenAL;
+- DSK and eDSK disk images read and write;
+- FDC emulation to run protected original disks;
+- Create blank disk;
+- Magnum Light Phaser simulation;
+- Automatic program run at disk loading;
+- Real speed emulation (4 Mhz).

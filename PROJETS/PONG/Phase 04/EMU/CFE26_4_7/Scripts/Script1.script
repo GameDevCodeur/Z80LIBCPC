@@ -1,0 +1,12 @@
+Autotype=10 PRINT "Hello world!!
+Wait=7000
+;pause
+
+KeyDown=18 ; RETURN
+Wait=200
+KeyUp=all
+Wait=200
+
+Autotype=RUN
+Wait=3000
+;pause
